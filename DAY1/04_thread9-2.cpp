@@ -46,6 +46,18 @@ RT parallel_sum(IT first, IT last, RT init)
 
     std::cout << cnt_hw_thread << std::endl;
 
+    // 3. 데이타 량에 따른 스레드 갯수 계산
+    // => 규칙 : 한개의 스레드는 "최소 25개" 데이타 처리 해야한다고 가정
+
+    const std::size_t cnt_per_thread = 25;
+    const std::size_t max_cnt_thread =
+        (cnt_element + cnt_per_thread - 1) / cnt_per_thread;
+
+    // 최종적인 스레드의 갯수
+    const std::size_t cnt_thread =
+        std::min(cnt_hw_thread, max_cnt_thread);
+
+    std::cout << "최종 갯수 : " << cnt_thread << std::endl;
 
     return 0;
 
