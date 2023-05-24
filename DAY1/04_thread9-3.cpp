@@ -65,16 +65,26 @@ RT parallel_sum(IT first, IT last, RT init)
     {
         IT end = std::next(start, block_size);
 
-        thread_vec[i] = std::thread(...);
+        thread_vec[i] = std::thread(
+                        sum<std::vector<int>::iterator, int>
+                        start, end, std::ref(result_vec[i]) );
 
         start = end;
     }
     // 마지막 구간은 주스레드가 수행 합니다.
-    
+    sum(start, last, result_vec[cnt_thread - 1] ); 
 
 
-    return 0;
+    // 모든 스레드가 종료 될때를 대기
+    for (auto& t : thread_vec)
+        t.join();
 
+
+    // 각 스레드의 결과는 result_vec 에 있습니다.
+    // 결과를 합해서 반환 하면 됩니다.
+    RT ret = std::accumulate(result_vec.begin(),
+                            result_vec.end(), 0);
+    return ret;
 }
 
 
