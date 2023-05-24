@@ -40,8 +40,6 @@ RT parallel_sum(IT first, IT last, RT init)
     if (cnt_hw_thread == 0) // 정보를 구할수 없다면
         cnt_hw_thread = 2;
 
-    std::cout << cnt_hw_thread << std::endl;
-
     const std::size_t cnt_per_thread = 25;
     const std::size_t max_cnt_thread =
         (cnt_element + cnt_per_thread - 1) / cnt_per_thread;
@@ -49,8 +47,6 @@ RT parallel_sum(IT first, IT last, RT init)
     const std::size_t cnt_thread =
         std::min(cnt_hw_thread, max_cnt_thread);
 
-    std::cout << "최종 갯수 : " << cnt_thread << std::endl;
-    //--------------------------------------
     const std::size_t block_size = cnt_element / cnt_thread;
 
     std::vector<std::thread> thread_vec(cnt_thread - 1);
@@ -86,7 +82,6 @@ int single_thread()
     sum(v.begin(), v.end(), s);
     return s;
 }
-
 int multi_thread()
 {
     int s = parallel_sum(v.begin(), v.end(), 0);
