@@ -28,9 +28,16 @@ int main()
     std::thread t1(&foo, 10, 20);
 	t1.join();
 
-	scoped_thread sc1(std::thread(&foo, 10, 20)); 
 
+	// scoped_thread 사용
+	// 1. thread 생성후 move로 전달
 	std::thread t2(&foo, 10, 20);
-	scoped_thread sc2(std::move(t2));
+	scoped_thread sc1(std::move(t2));
+
+
+	// 2. 임시객체 형태로 전달
+	scoped_thread sc2(std::thread(&foo, 10, 20)); 
+
+
 }
 
