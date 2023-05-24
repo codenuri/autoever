@@ -16,6 +16,7 @@ int main()
 {
     std::thread t(&foo);
 
+    // auto
     std::thread::native_handle_type handle = t.native_handle();
     // windows : HANDLE
     // linux   : pthread_t
