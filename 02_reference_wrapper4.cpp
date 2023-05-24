@@ -10,9 +10,10 @@ void foo(int n, int& r)
 int main()
 {
 	std::function<void(int)> f;
-	
-	int n = 0;
+
 //	{
+		int n = 0;
+
 		// 이항함수 foo 의 2번째 인자를 n으로 고정한 단항함수 f 만들기
 		// f = std::bind(&foo, _1, n);
 		// => f는 내부적으로 "n" 을 보관할까요 ?
