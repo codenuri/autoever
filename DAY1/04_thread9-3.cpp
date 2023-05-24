@@ -50,8 +50,27 @@ RT parallel_sum(IT first, IT last, RT init)
 
     std::cout << "최종 갯수 : " << cnt_thread << std::endl;
     //--------------------------------------
+    // cnt_thread : 스레드 갯수
+    // cnt_element : 컨테이너에 담긴 요소의 갯수
+    const std::size_t block_size = cnt_element / cnt_thread;
+                    // => 스레드 한개가 처리하는 데이타의 갯수
 
+    std::vector<std::thread> thread_vec(cnt_thread - 1);
 
+    std::vector<RT> result_vec(cnt_thread);
+
+    IT start = first;
+
+    for (int i = 0; i < cnt_thread - 1; i++)
+    {
+        IT end = std::next(start, block_size);
+
+        thread_vec[i] = std::thread(...);
+
+        start = end;
+    }
+    // 마지막 구간은 주스레드가 수행 합니다.
+    
 
 
     return 0;
