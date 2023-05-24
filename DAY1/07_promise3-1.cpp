@@ -39,6 +39,8 @@ int main()
 
     // ÀÛ¾÷ 4. 
     std::cout << "\n" << s << std::endl;
+
+    t.join();
 }
 
 
