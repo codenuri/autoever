@@ -15,9 +15,8 @@ void init()
     {
         v.push_back(i);
     }
-
 }
-
+//----------------------------------
 
 // 구간의 합을 구하는 함수.
 template<typename IT, typename RT> 
@@ -30,8 +29,13 @@ int main()
 {
     init();
 
-
+    // sum : v의 모든 요소의 합을 구하는 함수
     int s = 0;
-    sum(v.begin(), v.end(), s);
+//  sum(v.begin(), v.end(), s); // 주스레드가 직접 호출
+
+    std::thread t(sum, v.begin(), v.end(), s);
+
+    t.join();
+
     std::cout << s << std::endl;
 }
