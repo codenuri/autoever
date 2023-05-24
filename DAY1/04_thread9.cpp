@@ -24,7 +24,6 @@ void sum(IT first, IT last, RT& result)
 {
     result = std::accumulate(first, last, result);
 }
-
 int main()
 {
     init();
@@ -33,7 +32,12 @@ int main()
     int s = 0;
 //  sum(v.begin(), v.end(), s); // 주스레드가 직접 호출
 
-    std::thread t(sum, v.begin(), v.end(), s);
+//  std::thread t(sum, v.begin(), v.end(), std::ref(s) );
+                // error, sum 이 템플릿 인데..
+                // sum을 직접 호출하는 모양이 아니므로 타입 추론이 안됩니다.
+
+    std::thread t(sum<std::vector<int>::iterator, int> , 
+                    v.begin(), v.end(), std::ref(s));
 
     t.join();
 
