@@ -22,9 +22,9 @@ int main()
     std::future<int> ft = pm.get_future();
 
     // 2. future 에서 shared_future를 꺼내세요
-    std::shared_future sft1 = ft.share();
-    std::shared_future sft2 = ft.share(); // 여러개도 가능
-    std::shared_future sft3 = sft1;  // 복사도 가능
+    std::shared_future<int> sft1 = ft.share();
+    std::shared_future<int> sft2 = ft.share(); // 여러개도 가능
+    std::shared_future<int> sft3 = sft1;  // 복사도 가능
 
     std::thread t(add, std::move(pm), 10, 20);
 
