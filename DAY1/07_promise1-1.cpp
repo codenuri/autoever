@@ -8,7 +8,8 @@ using namespace std::literals;
 
 // 1. 스레드 함수는 인자로 promise 를 참조로 받아야 합니다.
 
-void add(int a, int b, std::promise<int>& p)
+//void add(int a, int b, std::promise<int>& p)
+void add(int a, int b, std::promise<int>&& p)
 {
 	int s = a + b;
 
@@ -29,7 +30,13 @@ int main()
 
 
 	// 3. 스레드 생성할때 Promise 객체를 참조 로 전달
-	std::thread t(add, 10, 20, std::ref(pr));
+	// 주스레드는 future 객체를 꺼내고 나면 더이상 promise가 필요없습니다.
+	// 그래서 스레드에 전달할때
+	// 1. std::ref()로 전달해도 되고
+	// 2. std::move()로 전달해도 됩니다.
+//	std::thread t(add, 10, 20, std::ref(pr));
+	std::thread t(add, 10, 20, std::move(pr));
+
 
 	// 주스레드는 다른 작업을 하다가...
 
@@ -40,7 +47,6 @@ int main()
 	std::cout << ret << std::endl;
 
 	t.join();
-
 	
 }
 
