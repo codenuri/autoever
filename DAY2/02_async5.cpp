@@ -106,3 +106,15 @@ int main()
     std::cout << "result1 : " << r1 << std::endl;
     std::cout << "result2 : " << r2 << std::endl;
 }
+
+// C++ 에서 스레드를 만드는 방법은 결국 2개 입니다.
+
+// 1. std::thread, std::jthread 사용
+//                  => 스레드로 수행된 함수의 결과를 얻기위해
+//                  => promise/future 등을 사용
+// 
+// 2. std::async() 사용
+//                  => 스레드 풀에 생성
+//                  => 스레드 함수의 결과를 std::future로
+//                     바로 얻을수 있다.
+//                  => 기존 함수를 수정할 필요 없이 결과를 얻는다
