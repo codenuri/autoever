@@ -44,8 +44,21 @@ void pool_thread_main()
 
 			cv.wait(ul, []() { return !task_q.empty(); });
 
+			task = task_q.front();
+			task_q.pop();
 		}
+		task(); // 작업 실행!
 	}
+}
+
+void add_task(TASK task)
+{
+	{
+		std::lock_guard<std::mutex> g(m);
+
+		task_q.push(task);
+	}
+	cv.notify_one(); // 대기중인 스레드 깨우기.
 }
 
 
@@ -59,6 +72,13 @@ void init_pool(int cnt)
 int main()
 {
 	init_pool(4); // 초기에 4개의 스레드 생성
+
+	add_task(foo);
+	add_task(foo);
+	add_task(foo);
+	add_task(foo);
+	add_task(foo);
+	add_task(foo);
 
 	getchar();
 }
