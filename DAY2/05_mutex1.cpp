@@ -20,6 +20,8 @@ void foo(const std::string& name)
 
     for (int i = 0; i < 10; i++)
     {
+        // 임계영역(critical section) : 한개 스레드만 실행하는 영역
+        // 직렬화(serialization) 이라고도 합니다.
         m.lock();
         //---------------------------------
         x = 100;   delay();
