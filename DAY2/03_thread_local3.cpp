@@ -15,12 +15,15 @@ void init_thread()
 {
 	pdata = new int[1000];
 }
+void clean() { delete[] pdata; }
 
 void thread_main()
 {
 	init_thread();
 
 	// pdata »ç¿ë
+
+	clean();
 }
 
 int main()
