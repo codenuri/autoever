@@ -95,6 +95,12 @@ int main()
 {
     fill_vector();
     
-    single_thread();
-    multi_thread();
+//    single_thread();
+//    multi_thread();
+
+    auto r1 = chronometry(single_thread);
+    auto r2 = chronometry(multi_thread);
+
+    std::cout << "result1 : " << r1 << std::endl;
+    std::cout << "result2 : " << r2 << std::endl;
 }
