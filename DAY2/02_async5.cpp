@@ -9,7 +9,9 @@
 #include "chronometry.h"
 
 // async 예제
-static const int NUM = 100000000; // 1억
+// static const int NUM = 100000000; // 1억
+// static const int NUM = 10000000; // 
+static const int NUM = 1000000; // 
 
 std::vector<int> v1, v2;
 
