@@ -35,7 +35,19 @@ bool stop_pool = false;
 //-------------------------
 void pool_thread_main()
 {
+	TASK task;
+
+	while (true)
+	{
+		{
+			std::unique_lock<std::mutex> ul;
+
+			cv.wait(ul, []() { return !task_q.empty(); });
+
+		}
+	}
 }
+
 
 void init_pool(int cnt)
 {
