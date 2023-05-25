@@ -17,6 +17,13 @@ void foo()
     // 방법 2. 
     if (m.try_lock())
     {
+        // m 에 대해서 이미 lock 을 했지만, unlock 을 소멸자에 의존하고싶다.
+        // std::lock_guard<std::mutex> g(m); // 버그, 생성자에서 lock
+
+        std::lock_guard<std::mutex> g(m, std::adopt_lock); // ok
+                        // => 생성자에서 lock 하지 말라(이미 lock 되었다)
+                        // => 소멸자 unlock 기능만 사용
+
         // ..... 
 
         m.unlock();
