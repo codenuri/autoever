@@ -7,11 +7,24 @@ std::mutex m;
 
 void foo()
 {
-    m.lock();
-   
-    // ..... 
+    // lock_guard 荤侩过
+    // 
+    // 规过 1. 积己磊俊辑 m.lock() 荐青
+    {
+        std::lock_guard<std::mutex> g(m);
+    }
 
-    m.unlock();
+    // 规过 2. 
+    if (m.try_lock())
+    {
+        // ..... 
+
+        m.unlock();
+    }
+    else
+    {
+        //....
+    }
 }
 
 int main()
