@@ -4,7 +4,12 @@
 #include <thread>
 #include <string>
 
-int* pdata = nullptr;
+//int* pdata = nullptr;	// 모든 스레드가 공유 합니다.
+						// 스레드별 할당된 메모리는 여기 보관되면 안됩니다.
+
+thread_local int* pdata = nullptr; // 이렇게 하면
+						// 스레드별로 놓이게 되므로
+						// 스레드별 할당한 메모리를 관리할수 있게 됩니다.
 
 void init_thread()
 {
