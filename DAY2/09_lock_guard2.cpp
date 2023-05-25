@@ -18,14 +18,26 @@ public:
 
 std::mutex m;
 
+
 void goo()
 {   
-    lock_guard<std::mutex> g(m);
-//    m.lock();
-    std::cout << "using shared data" << std::endl;
-    throw std::runtime_error("goo fail");
-//    m.unlock();
+    {
+        std::lock_guard<std::mutex> g(m);
+//      lock_guard<std::mutex> g(m);    // 생성자에서 m.lock()
+        // 소멸자에서 m.unlock();
+        // 예외가 발생해도. 
+        // 지역변수 g의 소멸자 호출은 보장
+        // 스택풀기(stack unwinding)
+        //  m.lock();
+        std::cout << "using shared data" << std::endl;
+        throw std::runtime_error("goo fail");
+        //  m.unlock();
+    }
+
 }
+
+
+
 void foo()
 {
     try { goo(); }
