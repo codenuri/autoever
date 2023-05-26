@@ -5,6 +5,8 @@
 
 // 2. 지금은 godbolt.org 라는 아주 훌륭한 사이트가 있습니다.
 
+#include <atomic>
+
 int a = 0;
 int b = 0;
 
@@ -12,6 +14,13 @@ int b = 0;
 void foo()
 {
     a = b + 1;
+
+    
+    std::atomic_thread_fence(
+        //     std::memory_order_relaxed);
+        //     std::memory_order_acq_rel);
+        std::memory_order_seq_cst);
+
     b = 1;
 }
 
