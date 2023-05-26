@@ -28,6 +28,7 @@ public:
 
 		while (!head.compare_exchange_weak(node->next, node));
 
+		// CAS : Compare And Swap 
 		// A.CAS(B, C)
 		// if ( A == B ) 
 		// {
@@ -36,7 +37,7 @@ public:
 		// }
 		// else 
 		// {
-		//		C = A;
+		//		B = A;
 		//	    return false;
 		// }
 		
