@@ -37,7 +37,7 @@ Generator foo()
 	// 2. promise_type 안에 있는 get_return_object() 를 호출해서
 	//    Generator 객체 생성
 
-	// 3. promise_type 안에 약속된 initial_update() 호출
+	// 3. promise_type 안에 약속된 initial_suspend() 호출
 	//   => 만든 경우만 호출됨.
 
 	// 4. 2에서 만든 Generator 객체를 반환해서 main 으로 복귀
