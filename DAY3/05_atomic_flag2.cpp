@@ -13,7 +13,10 @@ void work()
 {
 	// while(use_flag);
 	// use_flag = true; // 이 2줄은 한번에 수행하는 것이 아래 함수.
-	while (use_flag.compare_exchange_strong(use_flag, true));
+	
+	bool value = false;
+
+	while (!use_flag.compare_exchange_weak(value, true));
 
 	std::cout << "start. using shared resource" << std::endl;
 	std::cout << "end.   using shared resource" << std::endl;
