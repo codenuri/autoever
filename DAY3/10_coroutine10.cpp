@@ -57,8 +57,9 @@ struct resume_new_thread
 	bool await_ready() const noexcept 
 	{
 		std::cout << __func__ << std::endl;
-		//return true; 
-		return false;
+		//return true;    // 중단하지 말고 계속 실행
+		return false;     // 중단하고 호출자에게로 이동
+							// 단, 그전에 아래 함수 호출하고 돌아감.
 	}
 	void await_suspend(std::coroutine_handle<>) const noexcept 
 	{
