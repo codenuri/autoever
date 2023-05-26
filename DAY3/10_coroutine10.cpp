@@ -52,13 +52,28 @@ public:
 	}
 };
 
+struct resume_new_thread
+{
+	bool await_ready() const noexcept 
+	{
+		std::cout << __func__ << std::endl;
+		//return true; 
+		return false;
+	}
+	void await_suspend(std::coroutine_handle<>) const noexcept 
+	{
+		std::cout << __func__ << std::endl;
+	}
 
+	void await_resume() const noexcept {}
+};
 
 Generator foo()
 {
 	std::cout << "foo 1" << std::endl;
 	
-	co_await std::suspend_always{};
+	co_await resume_new_thread{};
+
 //	co_await std::suspend_never{};
 
 	std::cout << "foo 2" << std::endl;
@@ -72,3 +87,20 @@ int main()
 
 
 }
+
+
+/*
+struct suspend_never 
+{
+	constexpr bool await_ready() const noexcept {return true; }
+	constexpr void await_suspend(coroutine_handle<>) const noexcept {}
+	constexpr void await_resume() const noexcept {}
+};
+
+struct suspend_always 
+{
+	constexpr bool await_ready() const noexcept {return false;}
+	constexpr void await_suspend(coroutine_handle<>) const noexcept {}
+	constexpr void await_resume() const noexcept {}
+};
+*/
