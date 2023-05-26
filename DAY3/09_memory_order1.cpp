@@ -36,6 +36,8 @@ void goo()
 
 // 해결책
 // => reordering 할수 없도록 명령을 해야 합니다.
+// => std::atomic_thread_fence() 또는
+// => atomic 연산에, std::memory_order 옵션으로 사용
 
 
 
