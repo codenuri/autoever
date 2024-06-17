@@ -1,6 +1,15 @@
 #include <iostream>
 #include <vector>
 
+// 핵심 #1. 리팩토링에서 사용되는 아주 유명한 용어 입니다. 의미를 생각해 보세요
+
+// "replace conditional with polymorphism"
+
+
+
+// 
+
+
 
 class Shape
 {
