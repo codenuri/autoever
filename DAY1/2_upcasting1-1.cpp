@@ -4,7 +4,11 @@ class Animal
 {
 public:
 	int age;
+	virtual ~Animal() {} // 가상 소멸자. 다음시간에 자세히 설명
+						 // dynamic_cast 를 사용하려면 한개 이상의 가상함수필요
+
 };
+
 class Dog : public Animal
 {
 public:
@@ -41,6 +45,9 @@ int main()
 									// pdog 가 가리키는 곳은 Dog 가 아닌 Animal
 	
 	// #2. dynamic_cast : 실행시간 캐스팅
+	// 특징 : 가상함수가 있는 타입에 대해서만 사용가능.
+	//       "실행시간에 타입을 조사하려면 가상함수 테이블이 있어야 한다."
+	// 
 	// 장점 : 객체의 종류를 조사할수 있다. 잘못된 캐스팅의 경우 0 반환
 	// 단점 : "실행시간에 조사" 해야 하므로 오버헤드가 있다. 느리다.
 
