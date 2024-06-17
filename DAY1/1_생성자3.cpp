@@ -33,7 +33,10 @@ public:
 
 int main()
 {
-	Student s("kim", 20, 15);
+	Student s("kim", 20, 15); // C++11 이전
+//	Student s{"kim", 20, 15}; // C++11 이후. 권장(?) 코드
+
+
 
 	Person p1("kim", 20); // ok. 초기화된 객체. 안전하다.
 
