@@ -40,7 +40,10 @@ int main()
 	Derived* p2 = new Derived;
 	delete p2;  // ok.. ~Derived() 안에서 ~Base() 호출하므로!!
 				// 파생 클래스는 기반 클래스 protected 접근 가능.
-
-
-
 }
+
+// 권장 
+// 1. 상속을 사용한다면, 무조건 기반 클래스의 소멸자는 virtual 로 하세요..!!
+// 2. 위 설명이 완벽히 이해 되신분만 위 기법도 고려해 보세요
+
+// 구글에서 "C++ core guideline" 검색후 1번째 링크
