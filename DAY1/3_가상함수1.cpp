@@ -47,5 +47,5 @@ int main()
 // java, swift, python, objective-c 등의 대부분의 객체지향 언어
 // C++, C# 의 virtual function
 
-// C++, C# : static binding 과 dynamic binding 이 모두 가능
-// java    : dynamic binding 만 가능
+// C++, C#      : static binding 과 dynamic binding 이 모두 가능
+// java, python : dynamic binding 만 가능
