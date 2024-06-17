@@ -22,7 +22,7 @@
 class Base
 {
 protected:
-	~Base() {}	// 가상 소멸자
+	~Base() {}	// non-virtual 소멸자
 };
 class Derived : public Base
 {
@@ -33,6 +33,14 @@ public:
 int main()
 {
 	Base* p = new Derived;
-	delete p;
+	delete p;	// 이순간 Base 소멸자 호출해야 하는데
+				// protected 멤버를 외부에서 접근 안되므로
+				// error. 즉, 이렇게는 사용할수 없다.
+
+	Derived* p2 = new Derived;
+	delete p2;  // ok.. ~Derived() 안에서 ~Base() 호출하므로!!
+				// 파생 클래스는 기반 클래스 protected 접근 가능.
+
+
 
 }
