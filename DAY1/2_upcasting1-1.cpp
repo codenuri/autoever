@@ -1,3 +1,5 @@
+#include <iostream>
+
 class Animal
 {
 public:
@@ -37,6 +39,16 @@ int main()
 	std::cout << pdog << std::endl; // 주소가 나온다!!
 									// 단, 이주소는 사용하면 안됨..	
 									// pdog 가 가리키는 곳은 Dog 가 아닌 Animal
+	
+	// #2. dynamic_cast : 실행시간 캐스팅
+	// 장점 : 객체의 종류를 조사할수 있다. 잘못된 캐스팅의 경우 0 반환
+	// 단점 : "실행시간에 조사" 해야 하므로 오버헤드가 있다. 느리다.
+
+	Dog* pdog2 = dynamic_cast<Dog*>(p); // 현재 "p = &a" 상태 이므로
+										// 잘못된 캐스팅
+										// 0반환
+	std::cout << pdog2 << std::endl;
+
 }
 
 
