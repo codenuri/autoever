@@ -55,6 +55,8 @@ int main()
 			// 그런데, 어떻게 구현해야 할까요 ? k 번째 도형이 뭘까요 ?
 
 			// 방법 #1. dynamic_cast 로 조사하자!
+			// => 새로운 도형(Triangle)이 추가되면 코드가 수정(추가)됩니다.
+			// => OCP 를 만족할수 없는 나쁜 디자인!!
 			if (dynamic_cast<Rect*>(v[k]) != nullptr)
 			{
 				v.push_back(new Rect(*v[k]) );
@@ -63,6 +65,10 @@ int main()
 			{
 				v.push_back(new Circle(*v[k]));
 			}
+
+			// 방법 #2. 다형성!!!
+			// => OCP 를 만족하는 좋은 디자인
+			// => 다음예제(도형편집기7.cpp) 에서.. 
 
 		}
 	}
