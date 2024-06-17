@@ -56,6 +56,10 @@ int main()
 										// 0반환
 	std::cout << pdog2 << std::endl;
 
+
+	// 단, 프로그램에서 "dynamic_cast" 를 사용하는 것은 
+	// => 나쁜 디자인 입니다. 오후 수업에서 등장..
+	// => 좋은 코드는 "dynamic_cast" 를 사용하면 안됩니다.
 }
 
 
