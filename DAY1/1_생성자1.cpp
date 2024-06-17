@@ -20,13 +20,11 @@ public:
 	{ 
 		std::cout << "Derived()" << std::endl; 
 	}
-
 	Derived(int a)			// Derived(int a) : Base()   <= 핵심. 컴파일러가 
 	{													// 추가한 코드는
 														// 항상 디폴트생성자 호출
 		std::cout << "Derived(int)" << std::endl; 
 	}
-
 	~Derived()		
 	{ 
 		std::cout << "~Derived()" << std::endl; 
@@ -37,7 +35,7 @@ public:
 };
 int main()
 {
-	Derived d1;
-//	Derived d2(5);
+//	Derived d1;		// call Derived::Derived()
+	Derived d2(5);	// call Derived::Derived(int)
 
 }
