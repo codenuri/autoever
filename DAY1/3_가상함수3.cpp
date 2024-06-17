@@ -15,9 +15,14 @@ public:
 
 
 	// #2. 가상함수 override 시에 "실수(오타)"가 있으면
-	// => 
-	virtual void fooo() {}		// 오타
-	virtual void goo(double){}
+	// => 에러가 아닙니다.
+	// => 다른 가상함수를 만든 것으로 취급. 
+//	virtual void fooo() {}		// 오타
+//	virtual void goo(double){}
+
+	// #3. 위 문제 때문에 C++ 진영에서 "버그"가 아주 많았습니다.
+	// => 그래서, C++11 에서 "override" 키워드 추가
+	virtual void fooo() override {}	 // error.	 
 };
 
 int main()
