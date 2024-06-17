@@ -23,40 +23,28 @@ public:
 class People
 {
 public:
-	void use_camera(? c) { c->take(); }
+	// 핵심 ; Camera, HDCamera 등의 구체적인 제품에 의존하지 말고!!
+	//        규칙(인터페이스)에 의존해서 사용합니다. (DIP 개념)
+	void use_camera(ICamera* c) { c->take(); }
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-class Camera
+// 이제 "카메라를 만들때는 반드시 규칙"을 지켜야 합니다.
+class Camera : public ICamera
 {
 public:
 	void take() { std::cout << "Take Picture" << std::endl; }
 };
 
-class HDCamera
+class HDCamera : public ICamera
 {
 public:
 	void take() { std::cout << "Take HD Picture" << std::endl; }
 };
 
-class People
+class UHDCamera : public ICamera
 {
 public:
-	void use_camera(Camera* p) { p->take(); }
-	void use_camera(HDCamera* p) { p->take(); }
+	void take() { std::cout << "Take UHD Picture" << std::endl; }
 };
 
 int main()
@@ -67,7 +55,11 @@ int main()
 	p.use_camera(&c);
 
 	HDCamera hc;
-	p.use_camera(&hc); 
+	p.use_camera(&hc);
+
+	UHDCamera uhc;
+	p.use_camera(&uhc); // ok!!! 새로운 카메라를 사용하지만
+						// People 은 수정될 필요 없다.
 }
 
 
