@@ -1,9 +1,16 @@
 #include <iostream>
 #include <vector>
 
+// 리팩토링 : 새로운 기능을 추가하는 것이 아니라, 
+//            기존 코드를 좋은 구조로 변경하는 것. 
+
 // 핵심 #1. 리팩토링에서 사용되는 아주 유명한 용어 입니다. 의미를 생각해 보세요
 
 // "replace conditional with polymorphism"
+// "        제어문(if, switch) 를 다형성(가상함수)로 변경해라"
+// 
+// Shape3.cpp 를 Shape4.cpp 로 변경해라
+// Shape6.cpp 를 Shape7.cpp 로 변경해라
 
 
 
