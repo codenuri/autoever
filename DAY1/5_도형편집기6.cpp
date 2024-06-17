@@ -54,6 +54,15 @@ int main()
 			// k번째 도형과 동일한 복제본을 만들어서 v에 추가합니다.
 			// 그런데, 어떻게 구현해야 할까요 ? k 번째 도형이 뭘까요 ?
 
+			// 방법 #1. dynamic_cast 로 조사하자!
+			if (dynamic_cast<Rect*>(v[k]) != nullptr)
+			{
+				v.push_back(new Rect(*v[k]) );
+			}
+			else if (dynamic_cast<Circle*>(v[k]) != nullptr)
+			{
+				v.push_back(new Circle(*v[k]));
+			}
 
 		}
 	}
