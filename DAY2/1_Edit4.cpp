@@ -59,5 +59,5 @@ public:
 // 2. 사각형을 그리는 정책을 다른 클래스에 사용할 필요도 없고
 // 3. 그림을 그리려면 멤버 데이타에 접근해야 합니다.
 // 
-// 즉 도형 편집기 예제는 : strategy 보다 template method 가 좋습니다.
+// 즉 도형 편집기 예제에서 draw/draw_imp 는 : strategy 보다 template method 가 좋습니다.
 // Edit 예제는          : template method 보다 strategy 가 좋습니다.
