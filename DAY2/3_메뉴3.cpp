@@ -3,6 +3,11 @@
 #include <vector>
 #include <conio.h> 
 
+// 이번 단계 까지의 핵심
+// => 메뉴 하나 하나를 "객체" 로 만든다는 관점 => "객체지향" 프로그래밍
+// => MenuItem, PopupMenu 클래스를 설계 해서 사용하는 관점. 
+
+
 class MenuItem
 {
 	std::string title;
@@ -55,11 +60,8 @@ public:
 
 
 			v[cmd - 1]->command();
-
 		}
-
 	}
-
 };
 
 
