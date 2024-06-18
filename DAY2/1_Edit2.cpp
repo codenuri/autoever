@@ -58,7 +58,9 @@ public:
 int main()
 {
 //	Edit e;
-	NumEdit e;
+	NumEdit e;		// e의 Validation 정책은 실행할때 변경 안됨.
+	AddressEdit e2;	// e의 정책이 변경된것이 아니라..
+					// 다른 정책을 가진 새로운 edit !!!
 
 	while (1)
 	{

@@ -76,6 +76,9 @@ int main()
 	e.set_validator(&v1);	// edit 에 값의 유효성을 확인하는 Validator 전달.
 							// edit 는 v1 의 Validation 정책을 사용해서 입력받게 됩니다.
 
+	LimitDigitValidator v2(15);
+	e.set_validator(&v2);	// 실행시간에 Validation 정책을 교체. 
+
 	while (1)
 	{
 		std::cout << e.get_data() << std::endl;
