@@ -19,6 +19,26 @@ public:
 	}
 };
 
+class PopupMenu
+{
+	std::string title;
+	std::vector<MenuItem*> v;
+public:
+	PopupMenu(const std::string& title) : title(title) {}
+
+	void add(MenuItem* m) { v.push_back(m); }
+
+	// PopupMenu º±≈√Ω√.. 
+	void command()
+	{
+
+	}
+
+};
+
+
+
+
 int main()
 {
 	MenuItem m1("±Ëπ‰", 11);
