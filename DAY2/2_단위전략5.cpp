@@ -9,7 +9,25 @@
 template<typename T> class debug_alloc
 {
 public:
+	inline T* allocate(std::size_t sz)
+	{
+		void* p = malloc(sizeof(T) * sz);
+		printf("allocate : %p, %d cnt", p, sz);
+		return static_cast<T*>(p);
+	}
 
+	inline void deallocate(T* p, std::size_t sz)
+	{
+		printf("deallocate : %p, %d cnt", p, sz);
+		free(p);
+	}
+
+	// 위 2개의 핵심 함수 외에도, 아래 3개의 멤버가 필요 합니다.(관례적인 코드)
+	debug_alloc() = default;
+	template<typename U> debug_alloc(const debug_alloc<U>&) {} 
+									// generic constructor 
+
+	using value_type = T;
 };
 
 
