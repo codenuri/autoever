@@ -30,8 +30,21 @@ public:
 // Folder 는 "복합객체(Composite)". 
 class Folder : public Component
 {
+	std::vector<Component*> v; // 핵심 
 public:
-	// 이부분 완성해 보세요. 함수 이름 main 함수 참고
+	Folder(const std::string& name) : Component(name) {}
+
+	void addItem(Component* c) { v.push_back(c); }
+
+	int getSize() override
+	{
+		int sz = 0;
+
+		for (auto c : v)
+			sz += c->getSize();
+
+		return sz;
+	}
 };
 
 
