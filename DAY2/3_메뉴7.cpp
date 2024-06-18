@@ -73,14 +73,9 @@ public:
 			v[cmd - 1]->command();
 		}
 	}
+
+	BaseMenu* get_submenu(int idx) { return v[idx]; }
 };
-
-
-
-
-
-
-
 
 
 int main()
@@ -92,7 +87,12 @@ int main()
 
 
 	// 아래 코드에 대해서 생각해 봅시다.
-	root->get_submenu(0)->add( new MenuItem("확대", 21) );
+//	root->get_submenu(0)->add( new MenuItem("확대", 21) );
+				// error. add() 함수는 PopupMenu 에 있는 멤버 함수. 
+				// get_submenu(0) 의 반환 타입은 BaseMenu*
+
+	// 해결책 #1. 캐스팅해서 add 를 사용한다.
+	static_cast<PopupMenu*>(root->get_submenu(0))->add(new MenuItem("확대", 21));
 
 
 	root->command();
