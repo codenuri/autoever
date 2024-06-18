@@ -98,7 +98,21 @@ int main()
 	root->add(new MenuItem("상태표시줄", 11));
 
 
+	// 핵심 : add 가 BaseMenu* 에도 있으므로 아래처럼 캐스팅 없이 사용가능
+
 	root->get_submenu(0)->add( new MenuItem("확대", 21) );
+
+
+	// 아래 코드는 MenuItem 객체에 대해서 add 호출 => 예외 발생!!
+	try
+	{
+		root->get_submenu(1)->add(new MenuItem("확대", 21));
+	}
+	catch (const UnsupportedOperation& e)
+	{
+		std::cout << "예외 발생됨\n";
+		std::exit(0);
+	}
 
 
 	root->command();
