@@ -30,3 +30,34 @@
 
 // 3. Valiation 정책이 다른 클래스로 분리되어 있으므로 
 //    Edit 의 멤버 데이타 접근이 어렵다.!!
+
+// MFC 라이브러리의 CEdit : Edit2.cpp 로 디자인되어 있습니다.
+// QT  라이브러리의 QEdit : Edit3.cpp 로 디자인되어 있습니다. (QValidator 있습니다)
+
+// 도형편집기를 생각해 봅시다.
+// => draw/draw_imp
+class Shape
+{
+protected:
+	virtual void draw_imp() = 0;
+public:
+	void draw()
+	{
+		std::cout << "mutex lock\n";
+		draw_imp();
+		std::cout << "mutex unlock\n";
+	}
+};
+
+class Rect : public Shape
+{
+public:
+	void draw_imp() { std::cout << "draw Rect\n"; }
+};
+// 도형을 그리는 정책은
+// 1. 실행시간에 변경할 필요가 없고..
+// 2. 사각형을 그리는 정책을 다른 클래스에 사용할 필요도 없고
+// 3. 그림을 그리려면 멤버 데이타에 접근해야 합니다.
+// 
+// 즉 도형 편집기 예제는 : strategy 보다 template method 가 좋습니다.
+// Edit 예제는          : template method 보다 strategy 가 좋습니다.
