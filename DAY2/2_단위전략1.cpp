@@ -10,7 +10,8 @@ class vector
 public:
 	vector(int sz)
 	{
-		buff = new int[sz];
+		buff = new T[sz]; // vector 설계시 이렇게 코드를 작성했다면
+						  // 사용자가 메모리 할당 정책을 변경할수 없습니다.
 	}
 	~vector()
 	{
