@@ -3,24 +3,13 @@
 // => 인터페이스로 교체 하지 말고, template 인자로 교체!
 
 
-template<typename T>
-struct IAllocator
-{
-	virtual T* allocate(int sz) = 0;
-	virtual void deallocate(T* p, int sz) = 0;
-	virtual ~IAllocator() {}
-};
-template<typename T>
+template<typename T,		// 저장할 타입
+		 typename Alloc>	// 메모리 할당기
 class vector
 {
 	T* buff;
 
-	//-----------------------------------------------
-	// 이 부분이 "strategy 패턴의 전형적인 형태"
-	IAllocator<T>* ax = nullptr;
 public:
-	void set_allocator(IAllocator<T>* p) { ax = p; }
-	//-------------------------------------------------
 
 	vector(int sz, IAllocator<T>* v) : ax(v)
 	{
@@ -48,6 +37,5 @@ public:
 };
 int main()
 {
-	MallocAllocator<int> m;
-	vector<int> v(10, &m);
+	vector< int, MallocAllocator<int> > v(10);
 }
