@@ -12,13 +12,13 @@ public:
 	inline T* allocate(std::size_t sz)
 	{
 		void* p = malloc(sizeof(T) * sz);
-		printf("allocate : %p, %d cnt", p, sz);
+		printf("allocate : %p, %zu cnt\n", p, sz);
 		return static_cast<T*>(p);
 	}
 
 	inline void deallocate(T* p, std::size_t sz)
 	{
-		printf("deallocate : %p, %d cnt", p, sz);
+		printf("deallocate : %p, %zu cnt\n", p, sz);
 		free(p);
 	}
 
@@ -26,10 +26,8 @@ public:
 	debug_alloc() = default;
 	template<typename U> debug_alloc(const debug_alloc<U>&) {} 
 									// generic constructor 
-
 	using value_type = T;
 };
-
 
 int main()
 {
@@ -37,7 +35,14 @@ int main()
 
 	std::cout << "-----------------" << std::endl;
 
-	v.resize(5);
+	v.resize(5);	// 새롭게 5개 버퍼 필요, debug_alloc 사용
 
 	std::cout << "-----------------" << std::endl;
+
+	v.resize(10); // 1. 새로운 10개 할당 - allocate 사용
+				  // 2. 5개 버퍼 내용 => 10개 에 복사
+				  // 3. 5개 버퍼 제거 - deallocate 사용
+
+	std::cout << "-----------------" << std::endl;
+
 }
