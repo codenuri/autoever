@@ -18,12 +18,17 @@ struct IValidator
 // 주민등록번호 : 991    1    확인
 
 
-
-
 class Edit
 {
 	std::string data;
+
+	//-----------------------------------
+	IValidator* val = nullptr;
 public:
+	void set_validator(IValidator* v) { val = v; }
+	//-----------------------------------
+
+
 	std::string get_data()
 	{
 		data.clear();
@@ -32,10 +37,10 @@ public:
 		{
 			char c = _getch();
 
-			if (c == 13) break; 
+			if (c == 13 && (val == nullptr || val->is_complete(data))  ) break;
 
-			if ( isdigit(c) )	
-			{
+			if ( val == nullptr || val->validate(data, c) ) // 값의 유효성 확인을
+			{												// 다른 객체에 위임.
 				data.push_back(c);
 				std::cout << c;
 			}
