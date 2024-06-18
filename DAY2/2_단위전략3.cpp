@@ -21,16 +21,32 @@ public:
 	void set_allocator(IAllocator<T>* p) { ax = p; }
 	//-------------------------------------------------
 
-	vector(int sz)
+	vector(int sz, IAllocator<T>* v) : ax(v) 
 	{
-		buff = new T[sz]; 
+		buff = ax->allocate(sz);
 	}
 	~vector()
 	{
-		delete[] buff;
+		ax->deallocate(buff, size);
+	}
+};
+//-------------------------------------------
+// 메모리 할당기 
+template<typename T> class MallocAllocator : public IAllocator<T>
+{
+public:
+	T* allocate(int sz) override
+	{
+		void* p = malloc(sizeof(T) * sz);
+		return static_cast<T*>(p);
+	}
+	void deallocate(T* p, int sz) override
+	{
+		free(p);
 	}
 };
 int main()
 {
-	vector<int> v(10); 
+	MallocAllocator<int> m;
+	vector<int> v(10, &m); 
 }
