@@ -69,13 +69,22 @@ public:
 
 int main()
 {
-	MenuItem m1("±è¹ä", 11);
-	MenuItem m2("¶ó¸é", 12);
+	MenuItem m1("ÂüÄ¡ ±è¹ä",   11);
+	MenuItem m2("¼Ò°í±â ±è¹ä", 12);
+
+	MenuItem m9("¶ó¸é", 21);
+
+
+	PopupMenu kimbab("±è¹ä·ù");
+	kimbab.add(&m1);
+	kimbab.add(&m2);
+
 
 	PopupMenu pm("¿À´ÃÀÇ Á¡½É");
 
-	pm.add(&m1);
-	pm.add(&m2);
+	pm.add(&kimbab); // ?? ÇÙ½É... ÇöÀç ÄÚµå´Â ¿¡·¯!!!
+					 // ÇØ°áÃ¥Àº ´ÙÀ½ ¿¹Á¦¿¡¼­!!
+	pm.add(&m9);
 
 	pm.command();	
 }
