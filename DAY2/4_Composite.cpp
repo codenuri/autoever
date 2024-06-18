@@ -2,10 +2,30 @@
 #include <vector>
 #include <string>
 
-class File  
+// File 과 Folder 의 공통의 기반 클래스
+class Component
 {
+	std::string name;
 public:
+	Component(const std::string& name) : name(name) {}
+
+	virtual ~Component() {}
+
+	// File   : 자신만의 크기 있음.
+	// Folder : 자신만의 크기 없음. 하지만 크기를 구할수는 있음.
+	virtual int getSize() = 0;
 };
+
+// File 은 "개별객체(Leaf)"
+class File  : public Component
+{
+	int size;
+public:
+	File(const std::string& name, int size) : Component(name), size(size) {}
+};
+
+
+
 class Folder 
 {
 public:
