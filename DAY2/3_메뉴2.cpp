@@ -25,7 +25,6 @@ public:
 	}
 };
 
-
 int main()
 {
 	MenuItem m1("±è¹ä", 11);
