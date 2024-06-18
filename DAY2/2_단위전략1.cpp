@@ -17,4 +17,7 @@ public:
 		delete[] buff;
 	}
 };
-
+int main()
+{
+	vector<int> v(10); // v는 내부적으로 int 10개 할당
+}
