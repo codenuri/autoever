@@ -22,15 +22,17 @@ class File  : public Component
 	int size;
 public:
 	File(const std::string& name, int size) : Component(name), size(size) {}
+
+	int getSize() override { return size; }
 };
 
 
-
-class Folder 
+// Folder 는 "복합객체(Composite)". 
+class Folder : public Component
 {
 public:
+	// 이부분 완성해 보세요. 함수 이름 main 함수 참고
 };
-
 
 
 int main()
