@@ -50,11 +50,26 @@ public:
 	}
 };
 
+// 이제 입력값의 유효성을 확인하는 다양한 종류의 Validator를 제공하면됩니다.
 
+class LimitDigitValidator : public IValidator
+{
+	int limit;
+public:
+	LimitDigitValidator(int n) : limit(n) {}
+
+	bool validate(const std::string& s, char c) override
+	{
+		return s.size() < limit && isdigit(c);
+	}
+};
 
 int main()
 {
 	Edit e;
+	LimitDigitValidator v1(5);
+	e.set_validator(&v1);	// edit 에 값의 유효성을 확인하는 Validator 전달.
+							// edit 는 v1 의 Validation 정책을 사용해서 입력받게 됩니다.
 
 	while (1)
 	{
