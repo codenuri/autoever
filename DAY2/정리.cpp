@@ -20,3 +20,7 @@
 // 정책클래스의		인터페이스로 약속되어 있다		문서화 되어 있다.
 // 함수이름			(함수이름을 코드로 약속)		cppreference.com 의 "Named Requirement"
 //												C++20 부터는 코드로도 가능 "concept"
+
+// template method, strategy : 디자인 패턴
+// policy base design        : C++ IDioms
+// 
