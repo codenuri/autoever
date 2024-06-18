@@ -95,6 +95,10 @@ int main()
 	static_cast<PopupMenu*>(root->get_submenu(0))->add(new MenuItem("확대", 21));
 
 
+	// 해결책 #2. 캐스팅없이 add 를 호출하려면 어떻게 해야 할까 ?
+	//            좋은 디자인 일까 ??
+	//			  다음 예제(메뉴8.cpp) 에서... 
+
 	root->command();
 }
 
