@@ -15,14 +15,14 @@ class basic_string
 public:
 	bool operator==(const std::basic_string& s)
 	{
-		return ? ;
+		// 문자열을 어떻게 비교할지를 템플릿 2번째 인자로 전달된 타입에 의존합니다.
+		// 아래 코드에서 compare 는 static 멤버 함수 입니다.
+		return Traits::compare(buff, s.buff, strlen(buff));
 	}
 };
-
-using string = std::basic_string<char>;
+using string  = std::basic_string<char>;
 using wstring = std::basic_string<wchar_t>;
 //-----------------------------------------------
-
 
 int main()
 {
