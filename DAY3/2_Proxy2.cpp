@@ -20,6 +20,15 @@ public:
 	int Sub(int a, int b) { return ec_send_server(server, 2, a, b); }
 };
 
+// 위와 같은 서버의 대행자(Proxy)가 있으면
+// 1. Client 제작자는 IPC 기술을 몰라도 됩니다.
+// 2. "1, 2" 와 같은 명령 코드 대신 "Add, Sub" 함수를 사용하면 됩니다.
+// 3. 장애 처리는 Proxy 가 담당하면 됩니다.
+// 
+// 4. 자주 사용되는 요청은 "캐쉬" 기능을 제공해도 됩니다.
+
+// Proxy를 통해서 다양한 기능을 제공할수 있습니다
+
 int main()
 {
 	Calc* calc = new Calc;
