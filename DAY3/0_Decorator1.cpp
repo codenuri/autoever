@@ -34,7 +34,7 @@ public:
 
 	void draw()
 	{
-		std::cout << "#######################\n";	// 추가된 기능
+		std::cout << "#######################\n";	// 추가된 기능(액자그림)
 		Picture::draw();							// 기존 기능
 		std::cout << "#######################\n";
 	}
@@ -45,5 +45,9 @@ int main()
 {
 	Picture pic("www.image.com/car.jpg");
 	pic.draw();
+
+	Frame frame("www.image.com/car.jpg");
+	frame.draw();		// "자동차 그림 + 액자그림"
+
 }
 
