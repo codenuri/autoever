@@ -46,8 +46,13 @@ int main()
 	Picture pic("www.image.com/car.jpg");
 	pic.draw();
 
-	Frame frame("www.image.com/car.jpg");
+	Frame frame("www.image.com/car.jpg");		
 	frame.draw();		// "자동차 그림 + 액자그림"
+
+	// 위 코드의 특징 : 이미 다운로드된 그림객체(pic) 에 기능이 추가된것이 아님.
+	//				   => 액자 기능을 추가하기 위해 그림을 다시 다운로드 한것
+
+	// 핵심 : 상속은 "객체가 아닌 클래스에 기능을 추가" 하는 것
 
 }
 
