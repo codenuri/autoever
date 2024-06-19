@@ -35,12 +35,23 @@ public:
 
 	void write(const std::string& data) override
 	{
-		auto s2 = "[ " + data + " ] 암호화됨";
-
-		stream->write(s2);
+		auto s2 = "[ " + data + " ] 암호화됨";	// 추가된 기능
+		stream->write(s2);						// 기존 객체의 기능.
 	}
 };
 
+class ZipDecorator : public Stream
+{
+	Stream* stream;		
+public:
+	ZipDecorator(Stream* s) : stream(s) {}
+
+	void write(const std::string& data) override
+	{
+		auto s2 = "[ " + data + " ] 압축됨";
+		stream->write(s2);					
+	}
+};
 
 
 int main()
