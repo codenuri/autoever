@@ -13,6 +13,8 @@ public:
 	void Release() { if (--refcnt == 0) delete this; }
 
 
+	~Calc() { std::cout << "~Calc\n"; }
+
 
 	Calc() { server = ec_find_server("Calc"); }
 
