@@ -12,10 +12,14 @@ class stack
 {
 	C c;
 public:
-	void push(const T& e) { c.push_back(e); }
-	void pop()			  { c.pop_back(); }
-	T& top() { return c.back(); }
+	inline void push(const T& e)  { c.push_back(e); }
+	inline void pop()			  { c.pop_back(); }
+	inline T& top()				  { return c.back(); }
 };
+
+#include <stack> // C++ 표준의 stack. 
+				 // => 위처럼 구현되어 있습니다.
+				 // => 흔히 "stack adapter" 라고 부릅니다.
 
 int main()
 {
