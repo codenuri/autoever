@@ -10,21 +10,26 @@ template<typename T> class sp
 {
 	T* obj;
 public:
-	sp(T* p = nullptr) : obj(p) {}
-	
-	sp(const sp& other) : obj(other.obj) {}
+	sp(T* p = nullptr) : obj(p) { if (obj != nullptr) obj->AddRef(); }
+	sp(const sp& other) : obj(other.obj) { if (obj != nullptr) obj->AddRef(); }
+	~sp() { if (obj != nullptr) obj->Release(); }
 
-	~sp() {}
+	// 스마트 포인터 핵심 : 진짜 포인터는 아니지만 포인터 처럼 -> 와 * 를 사용할수 있어야 한다.
+
+	T* operator->() { return obj; }
+	T& operator*() { return *obj; }
 };
 
 int main()
 {
-	sp<ICalc> calc1 = load_proxy();
+	sp<ICalc> calc1 = load_proxy(); // sp<ICalc> calc1( load_proxy() )
 	sp<ICalc> calc2 = calc1;
 
+	// calc1 은 포인터가 아니지만 포인터 역활이므로 아래처럼 사용할수 있어야 합니다.
 	int n1 = calc1->Add(1, 2);
 	int n2 = calc1->Sub(1, 2);
 }
+
 /*
 int main()
 {	
