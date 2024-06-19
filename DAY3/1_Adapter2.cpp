@@ -58,9 +58,14 @@ int main()
 {
 	std::vector<Shape*> v;
 
-	TextView tv("hello");
+	TextView tv("hello");	// TextView : 클래스
+							// tv       : 객체
 
-	v.push_back( &tv );
+	// 이미 생성된 TextView 타입의 "객체 tv" 를 도형편집기 시스템에 넣을수 있을까 ?
+	v.push_back( &tv );	// error. Shape 로 부터 파생되지 않았다
+						
+	// Text 를 사용할수도 없다!!
+	// tv를 도형편집기(v) 에 넣으려면 "객체 어답터" 필요!!
 }
 
 
