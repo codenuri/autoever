@@ -60,7 +60,9 @@ int main()
 	Frame frame(&pic); 
 	frame.draw();	   
 
-	Flower flower(&pic);
+//	Flower flower(&pic);
+	Flower flower(&frame); // ??? 핵심.!! 현재 코드에서는 에러!!			
+						   // 해결방법은 "다음소스에서.."
 	flower.draw();
 }
 
