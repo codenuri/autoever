@@ -52,4 +52,6 @@ int main()
 	ZipDecorator zd(&ed); 
 	zd.write("data");	// 1. zd가 압축기능 수행
 						// 2. ed.write(압축된데이타) ㅣ능 수행
+
+	// 구현은 decorator8.cpp 에서!!
 }
