@@ -43,7 +43,7 @@ struct OSXEdit : public IEdit
 struct IFactory
 {
 	virtual IButton* CreateButton() = 0;
-	virtual IEdit* CreateEdit() = 0;
+	virtual IEdit*   CreateEdit() = 0;
 
 	// Button, Edit 외에도 수십개의 GUI 컨트롤을 생성하는 함수들.. 
 
@@ -51,8 +51,10 @@ struct IFactory
 };
 
 
+
+
 //  style 별로 각 콘트롤을 만드는 공장
-class WinFactory 
+class WinFactory : public IFactory
 {
 public:
 	IButton* CreateButton() { return new WinButton; }
