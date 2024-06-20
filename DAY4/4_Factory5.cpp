@@ -8,6 +8,8 @@ class Shape
 public:
 	virtual void draw() = 0;
 	virtual ~Shape() {}
+
+	virtual Shape* clone() = 0;
 };
 
 class Rect : public Shape
@@ -16,7 +18,10 @@ public:
 	void draw() override { std::cout << "draw Rect" << std::endl; }
 
 	static Shape* create() { return new Rect; }
+
+	virtual Shape* clone() override  { return new Rect(*this); }
 };
+
 
 class Circle : public Shape
 {
@@ -24,6 +29,7 @@ public:
 	void draw() override { std::cout << "draw Circle" << std::endl; }
 
 	static Shape* create() { return new Circle; }
+	virtual Shape* clone() override { return new Circle(*this); }
 };
 
 
@@ -31,23 +37,23 @@ class ShapeFactory
 {
 	MAKE_SINGLETON(ShapeFactory)
 
-		using CREATOR = Shape * (*)(); 
-	std::map<int, CREATOR> create_map; 
+	std::map<int, Shape*> prototype_map; 
+
 public:
-	void register_shape(int key, CREATOR c)
+	void register_sample(int key, Shape* sample)
 	{
-		create_map[key] = c;
+		prototype_map[key] = sample;
 	}
 
 	Shape* create(int type)
 	{
 		Shape* p = nullptr;
 
-		auto it = create_map.find(type);
+		auto it = prototype_map.find(type);
 
-		if (it != create_map.end())
+		if (it != prototype_map.end())
 		{
-			p = it->second();   
+			p = it->second->clone(); // 저장된 견본의 복사본 생성.
 		}
 		return p;
 	}
