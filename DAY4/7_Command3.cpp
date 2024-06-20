@@ -93,7 +93,7 @@ public:
 };
 
 // 여러개의 명령을 보관했다가 "한번에 실행" 하는 매크로를 만들어 봅시다.
-class Macro
+class Macro : public ICommand    // "Composite 패턴"!!!!
 {
 	std::vector<ICommand*> v;
 public:
@@ -112,6 +112,7 @@ int main()
 	std::vector<Shape*> v;
 
 	Macro* mc1 = new Macro;
+
 	mc1->add(new AddRectCommand(v));
 	mc1->add(new AddCircleCommand(v));
 	mc1->add(new DrawCommand(v));
@@ -119,6 +120,12 @@ int main()
 	mc1->execute(); // 3개 명령을 동시에 실행. 
 
 
+	Macro* mc2 = new Macro;
+
+	mc2->add(new AddRectCommand(v));
+	mc2->add( mc1 ); // ??
+
+	mc2->execute();
 
 
 
