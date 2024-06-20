@@ -102,6 +102,10 @@ int main()
 {
 	std::vector<Shape*> v;
 
+	std::stack<ICommand*> undo_stack;
+
+	ICommand* command = nullptr;
+
 	while (1)
 	{
 		int cmd;
@@ -109,16 +113,21 @@ int main()
 
 		if (cmd == 1) 
 		{
-			v.push_back(new Rect);
+			command = new AddRectCommand(v);
+			command->execute();
+			undo_stack.push(command);
 		}
 		else if (cmd == 2) 
 		{
-			v.push_back(new Circle);
+			command = new AddCircleCommand(v);
+			command->execute();
+			undo_stack.push(command);
 		}
 		else if (cmd == 9)
 		{
-			for (auto p : v)
-				p->draw();
+			command = new DrawCommand(v);
+			command->execute();
+			undo_stack.push(command);
 		}
 
 	}
