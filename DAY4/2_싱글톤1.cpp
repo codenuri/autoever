@@ -18,7 +18,11 @@ class Cursor
 private:
 	Cursor() {}
 
-	// 규칙 #2.
+	// 규칙 #2. 컴파일러에게 복사 생성자를 만들지 못하도록..
+	Cursor(const Cursor&) = delete;
+	Cursor& operator=(const Cursor&) = delete;	// 복사를 금지하면
+												// 대입도 같이 금지 하는 것이
+												// 일반적인 코딩 관례 입니다.
 
 	// 규칙 #3. 오직 한개의 객체를 만들어서 반환하는 static 멤버 함수
 public:
@@ -37,9 +41,18 @@ int main()
 	// c1, c2 는 동일객체를 가리키는 참조 입니다
 	std::cout << &c1 << std::endl;
 	std::cout << &c2 << std::endl;
+
+	// 아래 처럼 객체를 생성하는 것도 안되게 해야 합니다.
+//	Cursor c3 = c1; // 복사 생성자!!
 }
 
 
+// 위 코드는 "오직 한개의 객체가 static 지역변수" 입니다.
+// 
+// => effective-c++ 의 저자인 scott-mayer 가 제안한 코드 입니다.
+// => 흔히 "mayer's singleton" 이라고 부릅니다.
+// => 특징 : "오직 한개의 객체가 static 지역변수"
+// => C++ 진영에서 "가장 좋은 싱글톤 코드" 로 알려져 있습니다.
 
 
 
