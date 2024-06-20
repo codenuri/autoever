@@ -72,23 +72,22 @@ public:
 
 class TCPServer
 {
+	NetworkInit init;
+	Socket sock{ SOCK_STREAM }; // TCP 서버
 public:
 	void Start(const char* sip, short port)
 	{
-
+		IPAddress addr(sip, port);
+		sock.Bind(&addr);
+		sock.Listen();
+		sock.Accept();
 	}
 };
-
-
 int main()
 {
-	NetworkInit init;
-
-	Socket sock(SOCK_STREAM); // TCP 서버
-
-	IPAddress addr("127.0.0.1", 4000);
-	sock.Bind(&addr);
-	sock.Listen();
-	sock.Accept();
+	// 라이브러리에 위 같은 TCSPServer 가 있다면 최종 사용자는 아래처럼
+	// 사용하면 됩니다. 아주 사용하기 쉬운 라이브러리가 되었습니다!!!
+	TCPServer server;
+	server.Start("127.0.0.1", 3000);
 
 }
