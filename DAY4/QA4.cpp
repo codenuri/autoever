@@ -19,9 +19,11 @@ template<typename T> class Register
 {
 public:
 	static Shape* create() { return new T; }
-	static AutoRegister ar;
+//	static AutoRegister ar;
+
+	inline static AutoRegister ar{ "AA" };
 };
-template<typename T> AutoRegister Register<T>::ar("A");
+//template<typename T> AutoRegister Register<T>::ar("A");
 
 class Rect : public Register<Rect>
 {
@@ -29,6 +31,7 @@ class Rect : public Register<Rect>
 
 int main()
 {
-
+//	Rect rc;
+//	rc.ar;
 }
 
