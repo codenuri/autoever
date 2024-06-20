@@ -15,17 +15,17 @@ public:
 
 class Shape {};
 
-template<typename T> class Register
+template<int N, typename T> class Register
 {
 public:
 	static Shape* create() { return new T; }
 //	static AutoRegister ar;
 
-	inline static AutoRegister ar{ "AA" };
+	inline static AutoRegister ar{ "AA" }; // ar{N, &T::create}; 
 };
 //template<typename T> AutoRegister Register<T>::ar("A");
 
-class Rect : public Register<Rect>
+class Rect : public Register<1, Rect>
 {
 };
 
