@@ -5,20 +5,26 @@
 
 class Cursor
 {
-	
 private:
 	Cursor() {}
 
 	Cursor(const Cursor&) = delete;
 	Cursor& operator=(const Cursor&) = delete;	
 
+	static Cursor* sinstance;
 public:
 	static Cursor& get_instance()
 	{
-		static Cursor instance;
-		return instance;
+		if (sinstance == nullptr)
+			sinstance = new Cursor;
+
+		return *sinstance;
 	}
 };
+Cursor* Cursor::sinstance = nullptr;
+
+
+
 
 int main()
 {
