@@ -15,7 +15,10 @@ public:
 	void Draw() { std::cout << "Draw " << image_url << std::endl; }
 
 	
-	static std::map<std::string, Image*> image_map;
+	// inline static  : C++17 에서 추가된 문법
+	//					static 멤버 데이타 사용시, 클래스 외부 선언 없어도 됩니다.
+	//					visual studio 에서 C++ 버전 "C++17이상"으로 설정해야합니다.
+	inline static std::map<std::string, Image*> image_map;
 
 	// Image 객체를 생성해서 반환하는 static 멤버 함수
 	static Image* Create(const std::string& url)
