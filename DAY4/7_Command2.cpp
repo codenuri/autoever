@@ -53,7 +53,7 @@ public:
 	// 객체를 만들기 위한 인터페이스를 제공하고 사용하지만.
 	// 어떤 객체를 만들지는 파생 클래스가 결정한다.!!
 	// factory method 패턴.
-	virtual Shape* create_button() = 0;
+	virtual Shape* create_shape() = 0;
 };
 
 // 사각형을 추가하는 명령
@@ -62,7 +62,7 @@ class AddRectCommand : public AddCommand
 public:
 	AddRectCommand(std::vector<Shape*>& v) : AddCommand(v) {}
 
-	Shape* create_button() override { return new Rect; }
+	Shape* create_shape() override { return new Rect; }
 };
 
 
@@ -71,7 +71,7 @@ class AddCircleCommand : public AddCommand
 public:
 	AddCircleCommand(std::vector<Shape*>& v) : AddCommand(v) {}
 
-	Shape* create_button() override { return new Circle; }
+	Shape* create_shape() override { return new Circle; }
 };
 
 
