@@ -43,15 +43,16 @@ public:
 
 	static Shape* create() { return new Circle; }
 }; 
+// 아래 공장에는 "Rect, Circle" 등의 클래스 이름을 사용한적이 없습니다.
+// => 새로운 도형이 추가되어도 코드가 변경될 필요 없습니다.
+// => 하지만, 공장을 사용하려면 "등록(register_shape)" 부터 해야 합니다.
 
 class ShapeFactory
 {
 	MAKE_SINGLETON(ShapeFactory)
 
 	using CREATOR = Shape * (*)(); // 함수 포인터 타입
-
 	std::map<int, CREATOR> create_map; // <도형key, 생성함수> 를 자료구조에 보관
-
 public:
 	void register_shape(int key, CREATOR c)
 	{
@@ -80,6 +81,11 @@ int main()
 	std::vector<Shape*> v;
 
 	ShapeFactory& factory = ShapeFactory::get_instance();
+
+	// 공장을 사용하기 전에, 제품(도형)을 먼저 등록해야 합니다.
+	factory.register_shape(1, &Rect::create);
+	factory.register_shape(2, &Circle::create);
+
 
 	while (1)
 	{
