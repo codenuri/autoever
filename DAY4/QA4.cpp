@@ -19,8 +19,9 @@ template<typename T> class Register
 {
 public:
 	static Shape* create() { return new T; }
-	inline static AutoRegister ar{ "µµÇü" };
+	static AutoRegister ar;
 };
+template<typename T> AutoRegister Register<T>::ar("A");
 
 class Rect : public Register<Rect>
 {
