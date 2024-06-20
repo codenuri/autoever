@@ -71,7 +71,7 @@ public:
 	// => 모든 객체가 공유
 	// => "객체가 없어도 메모리에 존재", 즉, 객체를 만들지 않아도 생성자는 호출됨.
 	//    전역변수와 유사 하므로 main 함수 실행전에 생성자 호출됨. 
-	static AutoRegister ar{ 1, &Rect::create };
+	inline static AutoRegister ar{ 1, &Rect::create };
 };
 
 // Rect r1;	// 객체를 생성하는 생성자 호출
@@ -84,13 +84,14 @@ public:
 // => 클래스 생성자라고 생각할수 있습니다.
 // => C# 에 있는 "static 생성자 개념" 을 C++ 로 흉내낸것!
 
+/*
 // C# 코드
 class Car
 {
 	public Car() {} // instance 생성자. - 객체당 한번씩 호출
 	static Car() {} // static 생성자.   - 최초에 1회만 호출
 };
-
+*/
 
 
 
@@ -101,6 +102,8 @@ public:
 	void draw() override { std::cout << "draw Circle" << std::endl; }
 
 	static Shape* create() { return new Circle; }
+
+	inline static AutoRegister ar{ 2, &Circle::create };
 };
 
 
@@ -110,9 +113,6 @@ int main()
 	std::vector<Shape*> v;
 
 	ShapeFactory& factory = ShapeFactory::get_instance();
-
-	factory.register_shape(1, &Rect::create);
-	factory.register_shape(2, &Circle::create);
 
 
 	while (1)
