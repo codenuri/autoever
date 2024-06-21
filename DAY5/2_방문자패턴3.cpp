@@ -3,6 +3,30 @@
 #include <vector>
 #include <conio.h> 
 
+// list      : 선형 구조, 모든 요소가 같은 타입
+// 
+// PopupMenu : 트리 구조, 저장하는 요소가 다른 타입.
+//						 (PopupMenu, MenuItem)
+
+
+// 방문자 : 방문하는 요소 한개에 대한 연산을 정의!!
+//         그런데, 요소의 타입이 다를수 있다.
+class PopupMenu;
+class MenuItem;
+
+struct IMenuVisitor
+{
+	virtual void visit(PopupMenu*) = 0;
+	virtual void visit(MenuItem*) = 0;
+	virtual ~IMenuVisitor() {}
+};
+
+
+
+
+
+
+
 
 class BaseMenu
 {
@@ -72,6 +96,27 @@ public:
 
 	}
 
+};
+
+
+
+// 아래 코드가 "팝업메뉴의 타이틀을 변경하는 방문자" 입니다.
+class PopupMenuTitleChangeVisitor : public IMenuVisitor
+{
+	std::string deco;
+public:
+	PopupMenuTitleChangeVisitor(const std::string& s) : deco(s) {}
+
+	void visit(MenuItem*) override {} // MenuItem 방문시는 아무일도 안함
+
+	void visit(PopupMenu* pm) override 
+	{
+		auto s = pm->get_title();
+
+		s = s + deco;
+
+		pm->set_title(s);
+	}
 };
 
 
