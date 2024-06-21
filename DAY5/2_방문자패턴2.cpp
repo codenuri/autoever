@@ -34,6 +34,13 @@ public:
 	void visit(T& e) { std::cout << e << ", "; }
 };
 
+template<typename T>
+class ZeroVisitor : public IVisitor<T>
+{
+public:
+	void visit(T& e) { e = 0; }
+};
+
 // C++ STL 은 방문자 패턴을 사용하고 있지 않습니다.
 // list 를 확장(상속)해서 방문자 패턴을 적용해 봅시다
 
@@ -59,6 +66,7 @@ public:
 
 int main()
 {
+	// MyList<int> s1(10, 3);
 	MyList<int> s = { 1,2,3,4,5,6,7,8,9,10 };
 
 	TwiceVisitor<int> tv;
@@ -67,10 +75,17 @@ int main()
 	ShowVisitor<int> sv; 
 	s.accept(&sv);
 
+	ZeroVisitor<T> zv; // 방문하는 요소를 0으로 만드는 방문자
+	s.accept(&zv);
 
+	s.accept(&sv); // 화면 출력
 }
 
-
+// 위 예제는 실용적이지는 않습니다. 
+// => 그냥 직접 요소를 2배로 하면 됩니다
+// => 설명을 위한 예제
+// 
+// => 다음예제가 더 좋습니다
 
 
 
