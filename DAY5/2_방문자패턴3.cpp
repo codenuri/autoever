@@ -140,8 +140,15 @@ class PopupMenuTitleChangeVisitor : public IMenuVisitor
 	std::string deco;
 public:
 	PopupMenuTitleChangeVisitor(const std::string& s) : deco(s) {}
-
-	void visit(MenuItem*) override {} // MenuItem 방문시는 아무일도 안함
+	
+	// 아래 2개의 함수에서 각각 "MenuItem", "PopupMenu" 를 방문했을때
+	// 해야할 연산을 정의 하시면 됩니다.
+	void visit(MenuItem* m) override
+	{
+		auto s = m->get_title();
+		s = s + " *";
+		m->set_title(s);
+	}
 
 	void visit(PopupMenu* pm) override 
 	{
@@ -180,7 +187,7 @@ int main()
 	// "root" 는 복합객체
 	// 모든 메뉴를 방문해서, "PopupMenu" 인 경우만 title 을 변경하는
 	// 방문자를 만들어 봅시다.
-	PopupMenuTitleChangeVisitor pv("=>");
+	PopupMenuTitleChangeVisitor pv(" =>");
 	root->accept( &pv ); // pv 가 모든 메뉴를 방문해서 주어진 연산 수행
 
 
