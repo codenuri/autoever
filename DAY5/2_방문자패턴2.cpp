@@ -18,6 +18,40 @@ struct ICollection
 	virtual ~ICollection() {}
 };
 //-------------------------------------------------
+// 핵심 : 방문자를 결국 "요소 한개에 대한 연산을 정의" 하는 클래스 입니다.
+
+template<typename T> 
+class TwiceVisitor : public IVisitor<T>
+{
+public:
+	void visit(T& e) { e = e * 2; }
+};
+
+template<typename T>
+class ShowVisitor : public IVisitor<T>
+{
+public:
+	void visit(T& e) { std::cout << e << ", "; }
+};
+
+// C++ STL 은 방문자 패턴을 사용하고 있지 않습니다.
+// list 를 확장(상속)해서 방문자 패턴을 적용해 봅시다
+
+template<typename T>
+class MyList : public std::list<T>, public ICollection<T>
+{
+public:
+	void accept(IVisitor<T>* v) override
+	{
+		// 방문자는 요소 한개에 적용할 연산을 가지고 있습니다.
+		// 자신의 모든 요소를 방문자에게 전달합니다
+		for (auto& e : *this)
+			v->visit(e);
+	}
+};
+
+
+
 
 
 
