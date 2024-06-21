@@ -41,23 +41,25 @@ template<typename T>
 class MyList : public std::list<T>, public ICollection<T>
 {
 public:
+	// C++문법 : 생성자는 기본적으로 상속되지 않습니다.
+	//           C++11 부터 아래처럼 하면 "생성자도 상속" 됩니다.
+	using std::list<T>::list;
+
+	// => 이제 MyList 객체 생성시 std::list 와 동일한 모양으로 생성가능합니다.
+
+
 	void accept(IVisitor<T>* v) override
 	{
 		// 방문자는 요소 한개에 적용할 연산을 가지고 있습니다.
 		// 자신의 모든 요소를 방문자에게 전달합니다
-		for (auto& e : *this)
+		for (auto& e : *this)  // *this 는 list 입니다. !!
 			v->visit(e);
 	}
 };
 
-
-
-
-
-
 int main()
 {
-	std::list<int> s = { 1,2,3,4,5,6,7,8,9,10 };
+	MyList<int> s = { 1,2,3,4,5,6,7,8,9,10 };
 
 	TwiceVisitor<int> tv;
 	s.accept(&tv);		 
