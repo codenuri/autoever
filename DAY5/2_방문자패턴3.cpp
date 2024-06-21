@@ -21,14 +21,17 @@ struct IMenuVisitor
 	virtual ~IMenuVisitor() {}
 };
 
+// 모든 메뉴는 방문자를 받아들여야 합니다.
+struct IAcceptor
+{
+	virtual void accept(IMenuVisitor* v) = 0;
+	virtual ~IAcceptor() {}
+};
 
 
 
 
-
-
-
-class BaseMenu
+class BaseMenu : public IAcceptor
 {
 	std::string title;
 public:
@@ -56,12 +59,43 @@ public:
 		std::cout << get_title() << " 메뉴가 선택됨" << std::endl;
 		_getch();
 	}
+
+	void accept(IMenuVisitor* visitor) override
+	{
+		// MenuItem 은 하위 메뉴가 없으므로 자신만 방문자에 보내면 됩니다.
+		visitor->visit(this);
+	}
 };
+
+
 
 class PopupMenu : public BaseMenu
 {
 	std::vector<BaseMenu*> v;
 public:
+
+	// PopupMenu 에 방문자가 도착할때를 잘생각해 보세요
+	// => 이 코드가 핵심 입니다.
+	void accept(IMenuVisitor* visitor) override
+	{
+		// #1. 자신을 방문자에 전달
+		visitor->visit(this);
+
+
+		// #2. 자신의 하위 메뉴를 방문자에 전달 하면 안되고!!
+		//     방문자을 다시 하위 메뉴에 방문시켜야.
+		for (auto e : v)
+		{
+		//	visitor->visit(e); // 이렇게 하면 안되고
+			e->accept(visitor);// 이렇게 해야 모든 메뉴를 방문자에게 전달
+								// 할수 있습니다.
+		}
+	}
+
+
+
+
+
 	PopupMenu(const std::string& title) : BaseMenu(title) {}
 
 	void add_menu(BaseMenu* p) { v.push_back(p); }
