@@ -181,7 +181,7 @@ int main()
 	// 모든 메뉴를 방문해서, "PopupMenu" 인 경우만 title 을 변경하는
 	// 방문자를 만들어 봅시다.
 	PopupMenuTitleChangeVisitor pv("=>");
-	root->accept(pv); // pv 가 모든 메뉴를 방문해서 주어진 연산 수행
+	root->accept( &pv ); // pv 가 모든 메뉴를 방문해서 주어진 연산 수행
 
 
 
