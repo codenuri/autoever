@@ -25,7 +25,7 @@ public:
 
 int main()
 {
-	Charater* p = new Charater;
+	Character* p = new Character;
 	p->run();
 	p->attack();
 
