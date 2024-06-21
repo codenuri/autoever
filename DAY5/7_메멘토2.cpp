@@ -27,7 +27,6 @@ public:
 		m->penWidth = penWidth;
 
 		memento_map[key] = m;
-
 		return key;
 	}
 	void Restore(int key)
@@ -37,7 +36,22 @@ public:
 		penWidth = m->penWidth;
 		penColor = m->penColor;
 	}
+	void ClearMemento(int key = -1)
+	{
+		if (key == -1)
+		{
+			// 모든 기록 제거
+		}
+		else
+		{
+			// key 만 제거.
+		}
 
+		// 아니면 key 자체를 사용되지 않을때 제거
+		// key 를 int 가 아닌 객체로 해서 소멸자에서 reference couting 으로 !!
+	}
+
+	~Graphics() { ClearMemento(); }
 
 
 	void DrawLine(int x1, int y1, int x2, int y2)
