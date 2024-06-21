@@ -18,6 +18,11 @@ struct IMenuVisitor
 {
 	virtual void visit(PopupMenu*) = 0;
 	virtual void visit(MenuItem*) = 0;
+
+	// SpecialMenu 라는 새로운 클래스가 추가되면
+	// 아래 같이 추가되어야 하는데, 인터페이스를 변경하는 것은 힘든 작업입니다.
+//	virtual void visit(SpecialMenu*) = 0;
+
 	virtual ~IMenuVisitor() {}
 };
 
