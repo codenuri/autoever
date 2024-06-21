@@ -74,12 +74,15 @@ int main()
 	Team2 t2;
 	Team3 t3;
 	
-	// 요청을 처리하는 순서
+	// 요청을 처리하는 순서 ( Team1 => Team2 => Team3 )
 	t1.next = &t2;
 	t2.next = &t3;
 	t3.next = nullptr;
 
-	t1.Handle(7);
+//	t1.Handle(7);	// t1 이 해결
+//	t1.Handle(4);   // t1 -> t2.. 해결
+//	t1.Handle(21);  // t1 -> t2 -> t3 해결
+	t1.Handle(13);  // 아무도 해결 못함..
 }
 
 
