@@ -43,16 +43,17 @@ public:
 };
 
 // 모든 컨테이너(컬렉션)은 반복자를 꺼내는 함수가 있어야 한다.
-template<typename T> struct slist : public ICollection<T>
+template<typename T> struct slist 
 {
 	Node<T>* head = 0;
 public:
 	void push_front(const T& a) { head = new Node<T>(a, head); }
 
-	Iterator<T>* iterator() override
-	{
-		return new slist_iterator<T>(head);
-	}
+	// 모든 컨테이너는 자신의 "1번째요소" 와 "마지막 다음요소"를 가리키는
+	// 반복자를 꺼내는 함수가 있어야 한다.
+	// => 아래 함수가 반환하는 반복자는 "new" 로 만든 것 아닙니다.
+	inline slist_iterator<T> begin() { return slist_iterator<T>(head); }
+	inline slist_iterator<T> end()    { return slist_iterator<T>(0); }
 };
 
 int main()
@@ -63,17 +64,15 @@ int main()
 	s.push_front(30);
 	s.push_front(40); // 40 - 30 - 20 - 10
 
-	// 컨테이너(컬렉션)에서 반복자를 꺼내서 모든 요소를 접근하면 됩니다.
-	Iterator<int>* it = s.iterator();
+	auto first = s.begin();
+	auto last = s.end();
 
-	while (it->hasNext())
+	while (first != last)
 	{
-		std::cout << it->next() << std::endl;
+		std::cout << *first << std::endl;
+		++first;
 	}
 
-	delete it; // 라이브러리 내부에서 new 했는데, 사용자가 delete ??
-	// 좋지 않은 디자인!!	
-	 // 차라리, 스마트 포인터를 사용하는것이 좋습니다.
 }
 
 // 위 코드가 Java, C#, Python 등에서 볼수 있는 전통적인 디자인 기법을
