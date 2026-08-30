@@ -1,1 +1,1 @@
-C# 수업소스입니다.
+C# source code
