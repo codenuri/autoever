@@ -23,14 +23,26 @@ var t4 = (1, 2, 3);
 t4.Item1 = 20;
 
 WriteLine("{0} {1}", t4.Item1, t4.Item2);
+//-------------------------------------------------
 
 
 
+// #3. Named Member - 중요!
+(int,     int,     int)       t5 = (1, 2, 3); // unnamed tuple 
+(int one, int two, int three) t6 = (1, 2, 3); // named tuple
 
+// 요소 접근시
+// unnamed tuple : Item1, Item2, ...
+// named tuple    : 사용자가 지정한 이름 - 위 코드는 one, two, three
 
+WriteLine($"{t5.Item1}");
+WriteLine($"{t6.one}");
 
+// #4. Named Member 를 만드는 2가지 기술
+// 1. 타입에 이름 표기
+// 2. 초기값에 이름 표기
 
-// #3. Named Member
-(int,     int,     int)       v3 = (1,2,3); 
+// 아래 t7, t8 은 완전히 동일
+(int one, int two, int three) t7 = (1, 2, 3);
 
-
+var t8 = (one:1, two:2, three:3);
