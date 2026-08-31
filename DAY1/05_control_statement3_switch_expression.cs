@@ -24,3 +24,7 @@ string s2 = dayofweek switch
 				2=>"tue",
 				_=>"unknown"
 			};
+
+// 파이썬 : 공백과 탭이 중요
+// C/C++/C#/Java/Rust : 단어를 구별하기 위해서만 필요
+//						자유로움
