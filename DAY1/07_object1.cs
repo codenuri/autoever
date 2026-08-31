@@ -18,8 +18,13 @@ Console.WriteLine(b);
 string s2 = "  AAABB  "; // 앞뒤 공백 2개씩
 
 // s2 에서 앞뒤 공백을 제거한 문자열을 얻어서 s3 에 담고 싶다
+// => "s2." 한 후에 "looup table" 에서 메소드중에서 관련된 함수를 찾으세요
+
+string s3 = s2.Trim();  // s2 자체는 변화 없고
+                        // 공백이 제거된 새로운 문자열 반환
+Console.WriteLine($"{s2}");
+Console.WriteLine($"{s3}");
 
 
-string s3 =  ?;
 
 
