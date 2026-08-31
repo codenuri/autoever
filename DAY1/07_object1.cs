@@ -26,5 +26,7 @@ Console.WriteLine($"{s2}");
 Console.WriteLine($"{s3}");
 
 
+// 변수 뿐 아니라 리터럴도 메소드 사용가능(Python 도 가능)
+string s4 = 10.ToString(); // ok
 
 
