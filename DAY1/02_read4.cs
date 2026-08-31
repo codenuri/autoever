@@ -16,6 +16,10 @@ int n = Console.Read();	    // "ABCD" 입력후 enter 해보세요
 
 Console.WriteLine(n);   // 65
 
+n = Console.Read();     // 입력을 대기하지 않고 버퍼에 있던 'B' 꺼내 가기
+Console.WriteLine(n);   // 66
+
+
 // 위 2개 함수는 모두 입력을 종료하기 위해 enter 필요
 
 
