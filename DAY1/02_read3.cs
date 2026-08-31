@@ -15,8 +15,16 @@ Console.Write("input yout age >> ");
 // 따라서 C# 에서 정수 입력이 필요 하면
 
 // 1. 문자열로 먼저 입력 받으세요
-string s = Console.ReadLine();
+string s = Console.ReadLine();  // "10" 입력
 
 // 2. 입력된 문자열을 정수로 변경하세요
-int n1 = ConvertTo.ToInt32(s);
-int n2 = int.Parse(s);
+// => 아래 2개중 한가지 방법 사용
+int n1 = Convert.ToInt32(s);    // "10" => 10 으로 변경
+int n2 = int.Parse(s);          // "10" => 10 으로 변경
+                                // 즉위와 동일
+
+Console.WriteLine("입력된 나이 : {0}", n1);
+
+// 위 코드에서 "10" 대신 "kim" 등 숫자로 변경불가능한것을 입력하면
+// 프로그램은 비정상 종료(예외 발생)
+// => 예외 시간에 자세히
