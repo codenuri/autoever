@@ -14,7 +14,7 @@ string ret1 = Get1();
     return ("john", 20, 180); // 이름, 나이, 키
 }
 
-string ret2 = Get2();
+var ret2 = Get2();
 
 WriteLine($"{ret2.Item1}, {ret2.Item2}, {ret2.Item3}"); // john, 20, 180 출력해 보세요
 
@@ -25,6 +25,6 @@ WriteLine($"{ret2.Item1}, {ret2.Item2}, {ret2.Item3}"); // john, 20, 180 출력�
     return ("john", 20, 180); 
 }
 
-string ret3 = Get3();
+var ret3 = Get3();
 
 WriteLine($"{ret2.name}, {ret2.age}, {ret2.height}");
