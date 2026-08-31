@@ -33,9 +33,11 @@ int a1, a2, a3;
 
 
 
-
-
 // #3. 아래 2줄의 차이점은 ?
-(int a1, int a2, int a3) t2 = (1, 2, 3); 
-(int b1, int b2, int b3)    = (4, 5, 6); 
+(int a1, int a2, int a3) t2 = (1, 2, 3); // t2 라는 tuple 을 생성한것
+                                         // 각 멤버의 이름은 a1, a2, a3
+                                         // t2.a, t2.b
+(int c1, int c2, int c3)    = (4, 5, 6); // int c1 = 4 
+                                         // int c2 = 5
+                                         // int c3 = 6
 
