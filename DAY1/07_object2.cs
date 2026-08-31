@@ -9,8 +9,11 @@ using static System.Console;
 
 string s = "abcd";
 
-bool b = s.Contains('b');
-int  n = s.Length;       
+bool b = s.Contains('b');   // s 의 메소드 호출
+                            // => () 를 사용해서 인자 전달 가능
+
+int  n = s.Length;          // s 의 프라퍼티 사용
+                            // => () 가 없으므로 인자 전달 안됨
 
 WriteLine($"{b} {n}");
 
