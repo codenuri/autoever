@@ -10,8 +10,8 @@ Console.Write("press any key >> ");
 //    이 과정을 종료 하려면 enter 필요
 
 
-// ReadLine : 문자열 입력 - 반환 타입은 string
-// Read     : 한문자 입력 - 반환 타입은 int (아스키 코드)
+// ReadLine : 입력버퍼에서 모든 문자열 꺼내기 - 반환 타입은 string
+// Read     : 입력버퍼에서 한문자 꺼내기 - 반환 타입은 int (아스키 코드)
 int n = Console.Read();	    // "ABCD" 입력후 enter 해보세요
 
 Console.WriteLine(n);   // 65
@@ -20,6 +20,5 @@ n = Console.Read();     // 입력을 대기하지 않고 버퍼에 있던 'B' �
 Console.WriteLine(n);   // 66
 
 
-// 위 2개 함수는 모두 입력을 종료하기 위해 enter 필요
 
 
