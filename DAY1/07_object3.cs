@@ -14,3 +14,6 @@ int   n2 = int.Max(1, 2);
 
 int    n = int.Parse("30");
 double d = double.Parse("3.3");
+
+Console.WriteLine("hello"); // Console   : 클래스 이름
+                            // WriteLine : Console 의 정적 메소드
