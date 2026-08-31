@@ -8,10 +8,18 @@ string s1 = "hello";// 값 "hello" 보관
 
 // #2. 모든 변수는 자신이 보관하는 "값" 을 사용해서 연산을 수행하는 
 //     메소드를 제공합니다.
+//     변수가 제공하는 함수는 "메소드" 라고 합니다.
 string s = n1.ToString();
 bool b = s1.Contains('a');
 
 Console.WriteLine(b);
 
+// 예제
+string s2 = "  AAABB  "; // 앞뒤 공백 2개씩
+
+// s2 에서 앞뒤 공백을 제거한 문자열을 얻어서 s3 에 담고 싶다
+
+
+string s3 =  ?;
 
 
