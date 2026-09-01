@@ -19,7 +19,6 @@ class Car
                                             // "클래스이름.GetCount()"
                                             // 객체가 없어도 호출 가능
                                             // "Car.GetCount()"
-
     public Car(int s)
     {
         ++cnt;
@@ -32,11 +31,11 @@ class Program
     {
 //      Car.cnt = -10;
 
-        Console.WriteLine("자동차 갯수 : {0}", Car.cnt); // 0
+        Console.WriteLine("자동차 갯수 : {0}", Car.GetCount()); // 0
 
         Car c1 = new Car(50);
         Car c2 = new Car(80);
 
-        Console.WriteLine("자동차 갯수 : {0}", c1.GetCount() ); // 2
+        Console.WriteLine("자동차 갯수 : {0}", Car.GetCount() ); // 2
     }
 }
