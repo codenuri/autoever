@@ -16,7 +16,10 @@ int    n1 = 0;  // int n1 = new int() 와 동일
 double d1 = 0.0;
 string s2 = "ABC";
 
-// Rectange 은 컴파일러가 인식하는 타입(표준 타입)이 아닌 
+// Rectangle 은 컴파일러가 인식하는 타입(표준 타입)이 아닌 
 // class 문법으로 만든 타입 
 // => 편의 표기법 안됨. 반드시 new 필요
 
+// C/C++ 경험있는분 참고
+// => new 를 사용했다고 항상 "동적할당" 되는것은 아닙니다
+// => 오후에 "value_vs_reference" 강의에서 자세히
