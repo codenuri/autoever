@@ -1,17 +1,26 @@
 ﻿using System.Windows;
+using System.Windows.Media;
 
 class Program
 {
     [STAThread]
     public static void Main()
     {
+        /*
         Window w = new Window();
+
+        w.Title = "Hello";
+        w.Width = 200;
+        w.Height = 200;
+        w.Background = new SolidColorBrush(Colors.Yellow);
+        */
+
+        // 아래 코드 배운 문법입니다. 이해해 보세요
+        Window w = new Window { Title = "Hello", Width = 200, Height = 200 };
+
 
         w.Show();
 
-        // 프로그램에서 GUI 를 만든경우
-        // => 프로그램을 종료하지 말고
-        // => GUI 에서 발생하는 이벤트를 처리해야 합니다.
 
         Application app = new Application();
         app.Run();
