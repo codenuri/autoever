@@ -37,4 +37,13 @@ Console.WriteLine(s1); // "abcd"
 Console.WriteLine(s2); // "ABCD"
 
 
+// #3. 변수에 담긴 문자열을 변경하려면 어떻게 하나요 ?
+// string        : immutable. 변경불가
+// StringBuilder : mutable.   변경가능 
+//                            좀더 배워야 사용가능. 오후부터 사용
 
+
+// 참고
+// immutable : 변경 불가. 항상 안전하고, 실행속도도 빠릅니다
+// => 프로그램에서 변경할일이 없다면,  무조건 immutable 사용
+// => "반드시 변경해야 한다" 라고 할때만 mutable 
