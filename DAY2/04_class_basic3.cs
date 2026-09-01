@@ -14,12 +14,7 @@ class Rect
 
     // 아래 코드도 수정해 보세요
     public Rect()
-    {
-        left = 0;
-        top = 0;
-        rigth = 0;
-        bottom = 0; 
-    }
+        => (left, top, right, bottom) = (0, 0, 0, 0);
 
 
     public int GetArea()
