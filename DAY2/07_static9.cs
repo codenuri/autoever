@@ -23,9 +23,10 @@
     public Date AddDays(int ds)
     {
         Date temp = new Date(year, month, day + ds); // 잘못된 구현
-
         return temp;
     }
+
+    public static int HowManyDays(int m) { return days[m - 1]; };
 }
 class Program
 {
@@ -34,14 +35,17 @@ class Program
         // 5월달이 몇일까지 있는지 알고 싶다
 
         // 다음중 사용하기 편리해 보이는 것은 ?
+        // => 기준 날짜가 필요한 작업이 아닙니다.
+        // => "5" 라는 월만 알면 됩니다.
+        // => static method 가 편리합니다.
 
         // #1. instance 메소드로 제공
-        Date d = new Date(2026, 5, 1);
-        int ds1 = d.HowManyDays();
+//      Date d = new Date(2026, 5, 1);
+//      int ds1 = d.HowManyDays();
 
 
         // #2. static 메소드로 제공
-        int ds2 = Date.HowManyDays();
+        int ds2 = Date.HowManyDays(5);
 
     }
 }
