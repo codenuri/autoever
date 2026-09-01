@@ -17,6 +17,7 @@ class Program
     {
         Person p1 = new Person();   // 인자 없는 생성자 호출
         Person p2 = new Person(20); // 인자 1개 생성자 호출
+
         Person p3 = new Person { Age = 20 };
                         // 1. Person p3 = new Person()
                         // 2. p3.Age = 20
@@ -24,6 +25,11 @@ class Program
         // 여러개 property 가 있으면 아래 처럼도 가능
 //      Person p4 = new Person { Age = 20, Name="kim" };
 
+        // visual studio 에서 lookup table 에서 아이콘 알아두세요
+        // 메소드 : 정육각형 아이콘
+        // 프라퍼티 : 스패너 모양
+
+  
     }
 }
 
