@@ -21,6 +21,8 @@ int n = 0; // 메모리에 4바이트를 할당해야 한다
 // => 수명, 소유, 복사, 공유등의 현상이 달라진다 => 앞으로 등장
 //---------------------------------------------------------------
 // C/C++   : 타입사용자가 stack 을 사용할지 heap 을 사용할지 결정
+class Point { }
+
 Point pt; // stack 에 생성
 new Point; // heap 에 생성
 
@@ -31,8 +33,8 @@ class Point1 { };
 struct Point2 { };
 
 // 아래 코드는 완전히 동일하지만 객체가 사용하는 메모리 위치는 다릅니다
-Point1 p1 = new Point1();
-Point1 p2 = new Point2();
+Point1 p1 = new Point1(); // heap 에 x, y 존재
+Point1 p2 = new Point2(); // stack 에 x, y 존재
 
 
 
