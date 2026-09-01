@@ -1,0 +1,33 @@
+﻿using static System.Console;
+
+
+class Car
+{
+    private int speed = 0;
+    private int color = 0;
+
+//  public int cnt = 0;         // 객체당 한개씩 생성되는 필드
+
+    public static int cnt = 0;  // 모든 객체가 공유하는 필드
+                                // 1. 자동차를 만들지 않아도 메모리에 있고
+                                // 2. 자동차를 여러개 만들어도 각각의 객체메모리에는
+                                //    포함안됨
+
+
+
+    public Car(int s)
+    {
+        ++cnt;      
+        speed = s;
+    }
+}
+class Program
+{
+    public static void Main()
+    {
+        Car c1 = new Car(50);
+        Car c2 = new Car(80);
+
+        Console.WriteLine("자동차 갯수 : {0}", c1.cnt);
+    }
+}
