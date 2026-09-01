@@ -26,8 +26,20 @@
         return temp;
     }
 
-    public static int HowManyDays(int m) { return days[m - 1]; };
+    public static int HowManyDays(int m) { return days[m - 1]; }
+
+    public static bool IsLeapYear(int year)
+    {
+        bool b = (year % 400 == 0) && ((year % 4 == 0) && (year % 100 != 0));
+        return b;
+    }
+    public bool IsLeapYear()
+    {
+        return Date.IsLeapYear(year); // static method 다시 호출
+    }
 }
+
+
 class Program
 {
     public static void Main()
@@ -41,7 +53,7 @@ class Program
         bool b1 = d.IsLeapYear();
 
         // #2. static method
-        bool b = Date.IsLeapYear(2026);
+        bool b2 = Date.IsLeapYear(2026);
 
 
     }
