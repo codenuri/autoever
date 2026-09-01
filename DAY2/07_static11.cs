@@ -39,7 +39,7 @@
     }
 
     // 오늘 날짜를 가지는 Date 객체를 반환하는 정적 메소드
-    public static Date Today()
+    public static Date TodayM()
     {
         // 여기서는 시스템 내부 함수(OS 가제공하는 함수같은것들)
         // 로 오늘 날짜를 구해야 합니다.
@@ -48,7 +48,7 @@
     }
 
     // 오늘날짜를 가진 정적 필드
-    public static Date Today = Date.Today();
+    public static Date Today = Date.TodayM();
 }
 
 class Program
@@ -59,8 +59,9 @@ class Program
         Date d1 = new Date(2026, 9, 1);
 
         // 오늘 날짜 객체가 필요하면 아래 처럼 사용하게 해야 합니다
-        Date today1 = Date.Today();
-        Date today2 = Date.Today;
+        // #1 과 #2 중 좋은 것은 ?
+        Date today1 = Date.TodayM(); // #1
+        Date today2 = Date.Today;   // #2
 
 
     }
