@@ -51,3 +51,13 @@ class Program
 // reference type : 주소를 복사 한것, 같은 객체를 공유하게 됨
 // value type     : 객체를 복사 한것, x,y 값은 동일하지만 다른 객체
 // => 교재 37 page 그림
+
+// Swift 언어 : C# 의 위개념과 거의 동일
+
+// Java
+// 1. 언어자체가 제공하는 기본 타입은 "value type"
+// 2. class 문법으로 만드는 것은 "reference type"
+// => 사용자는 "class" 문법만 사용가능 - reference type 만 만들수 있다
+// => struct 문법이 없으므로 사용자는 value type 만들수 없다
+
+// C# 은 사용자가 "value type", "reference type" 모두 가능
