@@ -13,8 +13,7 @@ class Rect
         => (left, top, right, bottom) = (x1, y1, x2, y2);
 
     // 아래 코드도 수정해 보세요
-    public Rect()
-        => (left, top, right, bottom) = (0, 0, 0, 0);
+    public Rect() => (left, top, right, bottom) = (0, 0, 0, 0);
 
 
     public int GetArea()
