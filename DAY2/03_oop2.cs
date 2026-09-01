@@ -5,14 +5,14 @@
 
 class Rect
 {
-    // 사각형 한개의 정보를 보관할 데이터
+    // 사각형 한개의 정보를 보관할 데이터 - Field(필드) 라는 용어 사용
     int x1 = 0;
     int y1 = 0;
     int x2 = 0;
     int y2 = 0;
 
-    // 사각형에 관련된 기능을 제공하는 함수 
-    int GetArea()
+    // 사각형에 관련된 기능을 제공하는 함수 - Method(메소드)라는 용어사용
+    public int GetArea()
     {
         return (x2 - x1) * (y2 - y1);
     }
@@ -32,7 +32,8 @@ class Program
 {
     public static void Main()
     {
-        Rect rc = new Rect();       
+        Rect rc = new Rect();   
+        
         int area = rc.GetArea();
 
         Console.WriteLine("면적 : {0}", area); // 0
