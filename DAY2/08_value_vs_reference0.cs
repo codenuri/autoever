@@ -34,7 +34,7 @@ struct Point2 { };
 
 // 아래 코드는 완전히 동일하지만 객체가 사용하는 메모리 위치는 다릅니다
 Point1 p1 = new Point1(); // heap 에 x, y 존재
-Point1 p2 = new Point2(); // stack 에 x, y 존재
+Point2 p2 = new Point2(); // stack 에 x, y 존재
 
 
 
