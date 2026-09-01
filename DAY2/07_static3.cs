@@ -12,6 +12,7 @@ class Car
                                 // 1. 자동차를 만들지 않아도 메모리에 있고
                                 // 2. 자동차를 여러개 만들어도 각각의 객체메모리에는
                                 //    포함안됨
+                                // => 접근지 "Car.cnt" 접근
 
 
 
@@ -25,9 +26,11 @@ class Program
 {
     public static void Main()
     {
+        Console.WriteLine("자동차 갯수 : {0}", Car.cnt); // 0
+
         Car c1 = new Car(50);
         Car c2 = new Car(80);
 
-        Console.WriteLine("자동차 갯수 : {0}", c1.cnt);
+        Console.WriteLine("자동차 갯수 : {0}", Car.cnt); // 2
     }
 }
