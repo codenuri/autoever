@@ -12,7 +12,7 @@ class Rect
     public int rigth = 0;
     public int bottom = 0;
 
-    // 생성자 : 클래스 이름과 동일한 이름의 함수
+    // 생성자(constructor) : 클래스 이름과 동일한 이름의 함수
     // 특징   : 객체를 생성하면 자동으로 호출되는 함수 (파이썬의 init)
     public Rect(int x1, int y1, int x2, int y2)
     {
