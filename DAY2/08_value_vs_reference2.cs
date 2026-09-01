@@ -36,3 +36,18 @@ class Program
 		WriteLine($"{sp1.x} {sp2.x}"); 
 	}
 }
+
+// C# 이 가진 모든 타입은 아래 2개로 분류 합니다
+
+// Reference Type : class 문법으로 만든 것
+//		=> 객체 자체는 힙에 생성하고
+//		=> 스택에 있는 레퍼런스변수가 힙 객체의 주소를 관리하는 것
+//		=> C 언어의 포인터
+
+// Value Type : struct(구조체) 문법으로 만든것
+//		=> 객체 자체가 스택에 존재
+
+// Point p1 = p2 연산시  
+// reference type : 주소를 복사 한것, 같은 객체를 공유하게 됨
+// value type     : 객체를 복사 한것, x,y 값은 동일하지만 다른 객체
+// => 교재 37 page 그림
