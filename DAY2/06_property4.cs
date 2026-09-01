@@ -25,8 +25,8 @@ class Program
         string s = "hello";
 
         bool b = s.Contains('a'); // 메소드 호출
-        int n = s.Length;
-        s.Length = 0; // ?
+        int n2 = s.Length;        // 프라퍼티(위의 Age 처럼 만든것)
+//      s.Length = 0; // error. 읽기 전용 프라퍼티
     }
 }
 
