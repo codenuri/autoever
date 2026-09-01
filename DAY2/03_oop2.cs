@@ -12,7 +12,7 @@ class Rect
     int y2 = 0;
 
     // 사각형에 관련된 기능을 제공하는 함수 
-    int GetRectArea()
+    int GetArea()
     {
         return (x2 - x1) * (y2 - y1);
     }
@@ -22,5 +22,19 @@ class Rect
 // int area = GetRectArea(1, 1, 10, 10);
 
 // Rect 라는 타입이 있으면 사용자는 아래 처럼 사용하게 됩니다.
-Rect rc = new Rect();
-int area = rc.GetRectArea();
+// => 아래 코드는 논리적으로 문제 없지만 에러
+// Rect rc = new Rect();       // Rect 타입의 객체(변수 생성)
+// int area = rc.GetArea();
+
+// Top Level 방식의 코드는 class 문법 지원 못합니다.
+// => 이제 부터는 Main 메소드를 직접 만들어야 합니다.
+class Program
+{
+    public static void Main()
+    {
+        Rect rc = new Rect();       
+        int area = rc.GetArea();
+
+        Console.WriteLine("면적 : {0}", area); // 0
+    }
+}
