@@ -20,5 +20,5 @@ string s2 = s1;
 
 // s1 이 null 이면 "none" 그렇지 않으면 s1 값
 // 만들어 보세요
-string s3 = ?;
+string s3 = s1 ?? "none";
 
