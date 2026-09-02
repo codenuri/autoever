@@ -17,7 +17,12 @@ class Program
 {
     public static void Main()
     {
+        // Upcasting 은 언제 사용하는가 ?
 
+        List<Dog> s1 = new List<Dog>();
+        
+        s1.Add(new Dog());
+        s1.Add(new Dog());
 
     }
 }
