@@ -5,21 +5,26 @@
 // => 문법적인 제약이 아닌 디자인 규칙
 // => 그래야 Shape 타입으로 해당 특징(Draw()) 사용 가능
 
+// 핵심 #7. 기반 클래스 메소드중에서 파생 클래스가 다시 만들게 된다면
+//          대부분 virtual 로 만들어야 한다.
+
+// => 그래야 "Shape e = new Rect()" 에서 "e.Draw()" 가 Rect 호출
+// => 파생 클래스에서 재정의 할때 "override" 사용
 
 class Shape
 {
     private int color = 0;
 
-    public void Draw() { WriteLine("draw Shape"); }
+    public virtual void Draw() { WriteLine("draw Shape"); }
 }
 
 class Rect : Shape
 {
-    public void Draw() { WriteLine("draw Rect"); }
+    public override void Draw() { WriteLine("draw Rect"); }
 }
 class Circle : Shape
 {
-    public void Draw() { WriteLine("draw Circle"); }
+    public override void Draw() { WriteLine("draw Circle"); }
 }
 class Program
 {
