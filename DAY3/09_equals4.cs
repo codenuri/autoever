@@ -9,8 +9,20 @@ class Point
     public override bool Equals(object obj)
     {
         Point other = (Point)obj;
-
         return x == other.x && y == other.y;
+    }
+
+    // 사용자가 == 연산자를 다시 만드는 기능이 있습니다.
+    // => 아래 구현은 상태의 동일성 조사로 변경한것
+    public static operator ==(Point a, Point b)
+    {
+        return a.x == b.x && a.y == b.y;
+    }
+
+    // == 만들면 != 도 만들어야 합니다.
+    public static operator !=(Point a, Point b)
+    {
+        return !(a == b);
     }
 }
 
