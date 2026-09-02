@@ -16,7 +16,21 @@ class Shape
     private int color = 0;
 
     public virtual void Draw() { WriteLine("draw Shape"); }
+
+    // 아래 메소드는 virtual 로 할까요 ? non-virtual 로 할까요 ?
+    // => 파생 클래스가 다시 만들 필요 없다. non-virtual
+    public void SetColor(int c) { color = c; }
+
+    // => 각 도형은 면적을 구하는 방법이 다르다
+    // => 파생 클래스가 override 해서 자신에 맞는 코드를 제공해야 한다.
+    // => virtual
+    public virtual int GetArea() { return -1; }
 }
+
+
+
+
+
 
 class Rect : Shape
 {
