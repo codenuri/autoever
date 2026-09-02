@@ -68,9 +68,10 @@ class Program
 
         // 핵심 #5. 대상체의 타입에 대해서 확신이 없다면 조사후 캐스팅하세요
         // => is 연산자
-
         if ( r3 is Dog )
         {
+            ((Dog)r3).color = 2;
+
             // 이제 캐스팅해서 사용
             Dog d = (Dog)r3;
             d.color = 2;
