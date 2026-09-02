@@ -56,12 +56,31 @@ class Program
         r3.age   = 10;  // ok
         r3.color = 0;   // error
 
-        // 핵심 4. Animal 타입의 Reference 인 r3 을 가지고
+        // 핵심 #4. Animal 타입의 Reference 인 r3 을 가지고
         //        Dog 의 고유 멤버에 접근하려면 r3 를 Dog 타입으로 캐스팅해서
         //        사용해야 한다.
         // => 컴파일러에게 대상체가 Dog 라고 알려 주는것
 
         ((Dog)r3).color = 1;
+        // => 단 위 코드는 r3 의 대상체가 Dog 가 아닌 경우 runtime error
+        // => 확신이 있을때만 사용
+
+
+        // 핵심 #5. 대상체의 타입에 대해서 확신이 없다면 조사후 캐스팅하세요
+        // => is 연산자
+
+        if ( r3 is Dog )
+        {
+            // 이제 캐스팅해서 사용
+            Dog d = (Dog)r3;
+            d.color = 2;
+        }
+        
+        // 위 코드를 간결하게 하려면 아래 처럼
+        if ( r3 is Dog d )
+        {
+            d.color = 2;
+        }
 
     }
 }
