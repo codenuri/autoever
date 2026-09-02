@@ -49,9 +49,22 @@ class Program
         // dynamic type check : 타입에 관한 확인을 실행   시간에 하는것
 
         // 즉, C# 은 "r3.color = 0" 이 유효한지를 컴파일 시간에 확인
+        // => 컴파일러는 r3 자체가 Animal 이라는 것만 알고
+        // => r3 대상체가 Dog 라는 확신이 없다
+        // => 그래서 "r3.color = 0" 은 허용 안함
 
         r3.age   = 10;  // ok
         r3.color = 0;   // error
 
+        // 핵심 4. Animal 타입의 Reference 인 r3 을 가지고
+        //        Dog 의 고유 멤버에 접근하려면 r3 를 Dog 타입으로 캐스팅해서
+        //        사용해야 한다.
+        // => 컴파일러에게 대상체가 Dog 라고 알려 주는것
+
+        ((Dog)r3).color = 1;
+
     }
 }
+
+
+
