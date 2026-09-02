@@ -39,11 +39,26 @@ class Program
         //--------------------------------
         // 동일한 객체 인가의 조사
         // == 연산자 사용
+        // 하지만 == 연산자는 재정의 가능
 
-        bool ret = (p3 == p4);
-
+        // 아래 코드는 사용자가 재정의한 == 를 호출하므로 상태 조사
+        bool ret = (p3 == p4);  
         Console.WriteLine(ret);
 
+        // 해결책
+        // => object 타입으로 변경해서 == 사용
+        // => Point 타입이 아니므로 사용자가 만든 == 호출 안됨
+        bool ret2 = ((object)p3 == (object)p4);
+        Console.WriteLine(ret2);
+
+        bool ret3 = MyReferenceEquals(p3, p4); 
+        Console.WriteLine(ret3);
+    }
+
+    // 아래 함수의 의미를 잘생각해보세요
+    public static bool MyReferenceEquals(object a, object b)
+    {
+        return a == b;
     }
 }
 
