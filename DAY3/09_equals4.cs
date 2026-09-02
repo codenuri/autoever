@@ -51,7 +51,12 @@ class Program
         bool ret2 = ((object)p3 == (object)p4);
         Console.WriteLine(ret2);
 
-        bool ret3 = MyReferenceEquals(p3, p4); 
+        // p3 == p4 : p3, p4 가 Point 타입이므로 Point 가 다시만든 == 사용
+        // MyReferenceEquals(p3, p4) : object 타입으로 변경해서 비교 하므로
+        //                              항상 객체의 동일성 비교
+
+        bool ret3 = MyReferenceEquals(p3, p4);
+        bool ret4 = object.ReferenceEquals(p3, p4); // 이 표준함수가 위 함수와 동일
         Console.WriteLine(ret3);
     }
 
