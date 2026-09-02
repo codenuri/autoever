@@ -41,9 +41,9 @@ class Program
         bool ret2 = object.Equals(p3, p4); // 
 
 
-
-
         Console.WriteLine("{}", ret);
+
+
     }
 }
 
