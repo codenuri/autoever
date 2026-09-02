@@ -1,6 +1,16 @@
 using static System.Console;
 
-class Point 
+/*
+class object
+{
+    public virtual string ToString() 
+	{ 
+		// 기본 구현은 자신이 타입을 문자열로 반환
+	}
+}
+*/
+
+class Point // : object
 {
 	private int x = 0;
 	private int y = 0;
