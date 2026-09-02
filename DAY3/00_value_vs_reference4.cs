@@ -57,10 +57,16 @@ WriteLine($"{x1[0]} {x2[0]}");	// Reference Type 였다면 : 20, 20
 // #3. string 타입
 // => 아래 코드를 실행결과를 확인하세요
 // => 결과를 보고 Value Type 인지 ? Reference 인지 예상해 보세요
+// => Reference Type 입니다.
+// => 그런데, 실행결과를 보면 Value Type 처럼 보입니다.
+// => String 의특징을 알아야 정확히 이해 할수 있습니다.
 
 string s1 = "AB";
 string s2 = s1;
 
 s1 = "XY";
 
-WriteLine($"{s1} {s2}");  // ?
+WriteLine($"{s1} {s2}");   // "XY", "AB"
+// 아래 주석은 잘못된것
+// Reference 라면 : "XY", "XY"
+// Value 라면     : "XY", "AB"
