@@ -39,7 +39,7 @@ class Program
 
                     if ( e is Rect r ) // if ( e is Rect ) Rect r = (Rect)e 
                     {
-                        e.Draw();
+                        r.Draw();
                     }
                     else if ( e is Circle c)
                     {
