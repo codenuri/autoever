@@ -23,5 +23,8 @@ class Program
         // 아래 코드는 어느 메소드를 호출할까 ?
         // 여러분이 언어의 설계자라면 어느 메소드를 호출하게 만들지 생각해보세요
         ad.Cry(); // ?
+
+        // C#/C++ : Animal Cry
+        // Java, Python, Swift, Kotlin, Objective-C... 대부분의 언어 : Dog Cry
     }
 }
