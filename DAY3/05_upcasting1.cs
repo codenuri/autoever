@@ -43,8 +43,14 @@ class Program
         // 핵심 #3. Animal 타입인 r3 를 사용해서는
         //          Animal 고유의 멤버만 접근 가능하다.
         //          Dog 가 추가한 멤버는 접근 못함
+        // => 이유는 C# 은 "static type check" 를 하기 때문에
 
-        r3.age = 10;    // ok
+        // static  type check : 타입에 관한 확인을 컴파일 시간에 하는것
+        // dynamic type check : 타입에 관한 확인을 실행   시간에 하는것
+
+        // 즉, C# 은 "r3.color = 0" 이 유효한지를 컴파일 시간에 확인
+
+        r3.age   = 10;  // ok
         r3.color = 0;   // error
 
     }
