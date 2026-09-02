@@ -31,13 +31,13 @@ struct Int32 // : object
 {
     public override string ToString()
     {
-        return 자신이 보관하고 있는 값을 문자열로 변환해서 반환;
+        return 자신이 보관하고 있는 정수값을 문자열로 변환해서 반환;
     }
 }
 struct Double // : object 
 {
     public override string ToString()
     {
-        return 자신이 보관하고 있는 값을 문자열로 변환해서 반환;
+        return 자신이 보관하고 있는 실수값을 문자열로 변환해서 반환;
     }
 }
