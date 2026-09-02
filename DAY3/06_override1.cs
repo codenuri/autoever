@@ -8,7 +8,10 @@ class Animal
 class Dog : Animal
 {
     // override : 기반 클래스의 메소드를 파생 클래스가 다시 만드는 것
-    public void Cry() { WriteLine("2. Dog Cry"); }
+    // new : 기반 클래스 멤소드를 의도적으로 다시 만든다고 알리는 것
+    //       생략하면 "경고만 발생" - 혹시 실수하는 거 아닌가 알리기 위해
+
+    public new void Cry() { WriteLine("2. Dog Cry"); }
 }
 
 class Program
