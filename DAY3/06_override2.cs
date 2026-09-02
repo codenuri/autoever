@@ -28,3 +28,13 @@ class Program
         // Java, Python, Swift, Kotlin, Objective-C... 대부분의 언어 : Dog Cry
     }
 }
+
+
+// ad.Cry() 를 실제 어떤 함수 와 연결할것인가 ?
+// => 함수(메소드) 바인딩 이라는 이론
+
+// 1. static binding
+
+
+
+// 2. dynamic binding
