@@ -15,8 +15,8 @@ class Animal
 
 class Dog : Animal
 {
-    public void Cry1() { WriteLine("Dog Cry1"); }
-    public void Cry2() { WriteLine("Dog Cry2"); }
+    public new      void Cry1() { WriteLine("Dog Cry1"); }
+    public override void Cry2() { WriteLine("Dog Cry2"); }
 }
 
 class Program
@@ -25,8 +25,8 @@ class Program
     {
         Animal ad = new Dog();
 
-        ad.Cry1();  // ?
-        ad.Cry2();  // ?
+        ad.Cry1();  // Animal Cry1
+        ad.Cry2();  // Dog    Cry2
     }
 }
 
