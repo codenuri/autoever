@@ -18,3 +18,26 @@ void MyWriteLine(object obj)
 }
 MyWriteLine(n);
 MyWriteLine(d);
+
+//------------------------------------------
+// ToString() 메소드
+// => 객체의 상태를 문자열로 반환하는 가상 메소드
+
+class object
+{
+    public virtual string ToString() { 기본구현제공 }
+}
+struct Int32 // : object 
+{
+    public override string ToString()
+    {
+        return 자신이 보관하고 있는 값을 문자열로 변환해서 반환;
+    }
+}
+struct Double // : object 
+{
+    public override string ToString()
+    {
+        return 자신이 보관하고 있는 값을 문자열로 변환해서 반환;
+    }
+}
