@@ -1,6 +1,6 @@
 ﻿using static System.Console;
 
-// 핵심 #7
+// 핵심 #7. 다형성의 의미, 장점 - 아래 Main 주석 참고
 
 
 class Shape
