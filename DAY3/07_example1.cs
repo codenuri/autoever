@@ -10,12 +10,18 @@ class Rect
 
     public void Draw() { WriteLine("draw Rect");  }
 }
-
-
+class Circle
+{
+    public void Draw() { WriteLine("draw Circle"); }
+}
 class Program
 {
     public static void Main()
     {
+        Rect   r = new Rect();
+        Circle c = new Circle();
 
+        r.Draw();
+        c.Draw();
     }
 }
