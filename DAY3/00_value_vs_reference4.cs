@@ -70,3 +70,11 @@ WriteLine($"{s1} {s2}");   // "XY", "AB"
 // 아래 주석은 잘못된것
 // Reference 라면 : "XY", "XY"
 // Value 라면     : "XY", "AB"
+
+
+// 어떤 타입이 Reference ? Value ? 조사하려면
+// => 타입 이름에 선택후 오른쪽 버튼 누르고 "정의로 이동" 해서 내부 소스 보세요
+double d = 0.0;
+
+DateTime dt;
+
