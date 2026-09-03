@@ -30,6 +30,7 @@ class Program
         try
         {
             db.Backup();
+            db.Remove();
         }
         catch(Exception ex)
         {
@@ -40,6 +41,6 @@ class Program
             // 여기서 종료하지 않으면 프로그램은 계속 실행됩니다.
         }
 
-        db.Remove();
+        //db.Remove();
     }
 }
