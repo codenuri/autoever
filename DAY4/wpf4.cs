@@ -1,9 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-// #3. Content 속성
-// => WPF 핵심
-// => 모든 UI 는 자신의 Content 에 지정된 요소를 적절한 방식으로 보여준다
+// #4. 버튼 같은 GUI 의 이벤트 처리하기
+// => delegate(event) 방식으로 되어 있음
+// => 특정 이벤트 발생시 호출될 함수를 등록하는 방식
 
 class MainFrame : Window
 {
