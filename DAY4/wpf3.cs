@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 
 // #3. Content 속성
 // => WPF 핵심
@@ -12,7 +13,14 @@ class MainFrame : Window
         Width = 300;
         Height = 600;
 
-        Content = "ABCD"; // <== 핵심
+        // #1. Content 에 문자열 연결
+//      Content = "ABCD"; // <== 핵심
+
+        // #2. Content 에 버튼 연결
+        Button btn = new Button();
+        btn.Content = "확인";
+
+        Content = btn;
     }
 }
 
