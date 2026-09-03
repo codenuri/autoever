@@ -26,10 +26,30 @@ class MainFrame : Window
 
         // #4. 컨트롤 이벤트를 처리하기 위한 함수 연결
         // 1. 버튼 누르면 txtbox 에 입력된 값 꺼내서 출력해 보세요
-        // 2. slider 움직이면 txtbox 폰트를 키우세요
+        // 2. slider 움직이면 txtbox 폰트 크기를 키우세요
 
+        button.Click += Button_Click;
+
+        slider.ValueChanged += Slider_ValueChanged;
     }
 
+    private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+    {
+        // 1. slider 의 현재 값 구하기
+        double val = slider.Value;
+
+        // 2. txtbox 의 폰트 크기 변경
+        txtbox.FontSize = val;
+    }
+
+
+    private void Button_Click(object sender, RoutedEventArgs e)
+    {
+        string s = txtbox.Text;
+        Console.WriteLine(s);
+
+        txtbox.Text = ""; // 비우기
+    }
 }
 
 
