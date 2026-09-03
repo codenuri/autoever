@@ -28,9 +28,11 @@ class Program
         btn1.handler = Foo;
         btn2.handler = Goo;
 
-        btn1.UserPressButton(); 
-        btn2.UserPressButton(); 		
+       
+        
+        btn1.UserPressButton(); // Foo 호출
+        btn2.UserPressButton(); // Goo 호출		 
     }
     public static void Foo() => WriteLine("button1 click");
-    public static void Goo() => WriteLine("button1 click");
+    public static void Goo() => WriteLine("button2 click");
 }
