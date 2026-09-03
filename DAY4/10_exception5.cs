@@ -21,8 +21,11 @@ class Database
 
     public bool Backup()
     {
-        //      if(실패)
-        throw new Exception();
+        //  if(실패)
+        throw new FileNotFoundException();
+        
+        // if (다른이유로 실패)
+        throw new NetworkDisconnectException();
 
         return true;
     }
@@ -38,13 +41,20 @@ class Program
 
         try
         {
-            db.Backup();    
+            db.Backup();
             db.Remove();
+        }
+        catch (FileNotFoundException ex)
+        {
+            Console.WriteLine("파일 없음 예외 발생");
+        }
+        catch (NetworkDisconnectException ex)
+        {
+            Console.WriteLine("네트워크 연결 안됨 예외 발생");
         }
         catch (Exception ex)
         {
-            Console.WriteLine("예외 발생");
-
+            Console.WriteLine("위에서 처리되지 못한 예외");
         }
 
     }
