@@ -39,9 +39,17 @@ class Program
         // #3. 자신의 인스턴스 메소드 안에서 다른 인스턴스 메소드 호출
         IMethod(1); // ok.. ?? 객체가 필요 하지 않나요 ?
                     // 컴파일러가 "this.IMethod(1)" 로 변경한것
+                    //           "pg.IMethod(1)"
 
         this.IMethod(1); // ok
-	}
+
+        // 여기서 Delegate 등록시
+
+        MyFunc f1 = Program.SMethod; // static method 등록의 정확한 표기
+        MyFunc f2 = SMethod;         // 클래스 이름 생략
+        MyFunc f3 = this.IMethod;    // "객체.instancemethod"
+        MyFunc f4 = IMethod;         // this 생략시 컴파일러가 추가
+    }
 }
 
 class Test
