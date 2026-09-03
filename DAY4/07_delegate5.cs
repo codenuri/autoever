@@ -34,7 +34,7 @@ class Program
         int[] x = { 1, 2, 6, 8, 5 };
 
         // Array.FindIndex() 를 직접 구현해 봅시다
-//      int ret2 = Array.FindIndex(x, Foo);
+        //int ret2 = Array.FindIndex(x, Foo);
 
         int ret2 = MyFindIndex(x, Foo);
 
