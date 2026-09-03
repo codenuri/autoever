@@ -4,10 +4,12 @@ using static System.Console;
 // 이때 이름을 약속하기 위해 모두 인터페이스 기반으로 설계되었습니다.
 
 // C# 내부에 아래 코드 제공
+/*
 interface IComparable
 {
 	int CompareTo(object obj);
 }
+// 이제 크기비교가 가능한 모든 타입은 "IComparable" 인터페이스를 구현하기로 약속
 class string : IComparable
 {
 	public int CompareTo(object obj)
@@ -15,15 +17,14 @@ class string : IComparable
 		// 자신의 데이타에 맞게 구현
 	}
 }
-class Int32 : IComparable
+struct Int32 : IComparable
 {
-
     public int CompareTo(object obj)
 	{
 		// 자신의 데이타에 맞게 구현
 	}
 }
-
+*/
 
 class Program 
 {
@@ -51,10 +52,13 @@ class Program
 		// n1 > n2  이면 양수(1)
 		// n1 == n2 이면 0
 		// n1 < n2  이면 음수(-1)
+
+		M1(n1); // ok
+        M1(s1); // ok
     }
-
-
-
+	
+	// 메소드 인자로 "인터페이스 이름" 사용시
+	// => 인터페이스를 구현한 모든 타입을 받을수 있습니다.
 	public static void M1(IComparable ic)
 	{
 	}
