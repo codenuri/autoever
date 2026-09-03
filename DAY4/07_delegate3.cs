@@ -10,15 +10,21 @@ class Program
     {
         MyType f = Foo; 
 
-        // delegate 에 보관된 메소드 호출하는 법
+        // #1. delegate 에 보관된 메소드 호출하는 법
         f(10);          // 1. () 연산자 사용
         f.Invoke(10);   // 2. invoke() 메소드 사용
+
+        // #2. =, +=, -= 등으로 여러개 함수도 등록 가능
+        MyType f1 = Foo;
+        f1 += Goo;
+        f1 += Hoo;
+
+        f1(0); // 등록된 3개의 메소드 호출
     }
 
 
 
-    public static void Foo(int arg)
-    {
-        WriteLine($"Foo : {arg}");
-    }
+    public static void Foo(int arg) { WriteLine($"Foo : {arg}"); }
+    public static void Goo(int arg) { WriteLine($"Goo : {arg}"); }
+    public static void Hoo(int arg) { WriteLine($"Hoo : {arg}"); }
 }
