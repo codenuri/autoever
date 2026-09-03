@@ -11,7 +11,7 @@
 //        => 인터페이스 안에 있는 메소드를 만들라는 것
 
 interface ICamera
-{    
+{
     void Take(); // public 등의 접근지정자 표기하지 않고,
                  // 메소드 구현도 없다. 메소드 형태(이름, 반환타입, 인자)만 표기
 }
@@ -38,8 +38,10 @@ class HDCamera : ICamera
     public void Take() { WriteLine("take HD picture"); }
 }
 
-
-
+class UHDCamera : ICamera
+{
+    public void Take() { WriteLine("take UHD picture"); }
+}
 
 class Program
 {
@@ -51,8 +53,36 @@ class Program
         p.UseCamera(c);
 
         HDCamera hc = new HDCamera();
-        p.UseCamera(hc); 
+        p.UseCamera(hc);
+
+        UHDCamera uhc = new UHDCamera();
+        p.UseCamera(uhc);   // Person객체에 새로운 제품 전달
+                            // 코드를 수정하지 않아도 사용가능
     }
 }
+
+// 용어 정리
+
+// 인터 페이스 : 지켜야 하는 규칙 만을 가진것 => 함수이름만
+// 추상 클래스 : 지켜야 하는 규칙 + 다른 멤버도 있는 것
+
+
+// 강한 결합(tightly coupling)
+// => 하나의 클래스가 다른 클래스 사용시, 클래스 이름을 직접 사용 하는것
+// => Person 의 "UserCamera(HDCamera c)"  의 경우
+// => 경직된, 확장성 없는, 교체 불가능한 디자인
+
+
+// 약한 결합(loosely coupling)
+// => 하나의 클래스가 다른 클래스 사용시, 클래스 이름을 직접 사용 하지 않고
+//    규칙을 담은 인터페이스 이름으로만 사용하는 것
+// => Person 의 "UserCamera(ICamera c)"  의 경우
+// => 유연하고, 확장성 있는, 교체 가능한 디자인
+
+
+
+
+
+
 
 
