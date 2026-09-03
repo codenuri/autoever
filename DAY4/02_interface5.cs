@@ -13,7 +13,6 @@ class Label : IComparable
     public int CompareTo(object? obj)
     {
         Label other = (Label)obj;
-
         return title.CompareTo(other.title);
     }
 }
@@ -30,7 +29,7 @@ class Program
 
         int ret = d1.CompareTo(d2);
 
-        M1(d1); // error
+        M1(d1); // ok
     }
     public static void M1(IComparable obj)
     {
