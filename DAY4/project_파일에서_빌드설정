@@ -6,8 +6,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
-	<NoWarn>0219, 0168, 0414</NoWarn>
-
   </PropertyGroup>
 
 	<ItemGroup>
