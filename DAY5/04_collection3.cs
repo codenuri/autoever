@@ -36,7 +36,8 @@ class Program
         // => 그런데, e1, e2 를 사용하면 동일한 방식으로 열거 가능합니다
         while ( e1.MoveNext() )
         {
-            Console.WriteLine("{0}", e1.Current);
+            int n = e1.Current;
+            Console.WriteLine("{0}", n);
         }
     }
 }
