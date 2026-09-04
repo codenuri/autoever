@@ -36,16 +36,16 @@ class Program
             int n = e1.Current;
         }
         // 일부만 하려면
-        e1.Reset(); // 다시 처음 부터
+        e1 = c1.GetEnumerator();
         int n1 = e1.Current;
         e1.MoveNext();
         int n2 = e1.Current;
 
-
-
-
-
-        // #3. for 와 [] 사용..
-
+        // #3. [] 사용..
+        // => List 는 가능하지만
+        // => LinkedList 는 안됨
+        // => 위의 반복자(열거자)는 모든 컬렉션 가능
+        c1[0] = 1;
+        c1[1] = 2;
     }
 }
