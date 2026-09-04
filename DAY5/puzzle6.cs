@@ -106,8 +106,15 @@ class MainWindow : Window
         Point pt = e.GetPosition(this);
 
         // #1. 좌표로 부터 어느 블럭을 클릭했는지 계산
+
+        // block_width 가 100 이어도,
+        // 윈도우 size 변경되면 실제 block 크기는 달라집니다
+//      int bx = (int)(pt.X / block_width);
+//      int by = (int)(pt.Y / block_height);
+
         int bx = (int)(pt.X / (grid.ActualWidth / CNT));
         int by = (int)(pt.Y / (grid.ActualHeight / CNT));
+
 
         Console.WriteLine("{0}, {1}", bx, by);
 
