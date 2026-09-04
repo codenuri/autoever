@@ -28,10 +28,23 @@ class MainWindow : Window
 
 
         // #4. 각 컨트롤을 패널에 자식으로 추가
-        dp.Children.Add(txtbox);
+       
         dp.Children.Add(sp);
-        
+        dp.Children.Add(txtbox); // 핵심. 마지막에 붙인 자식이 나머지 전체 사용
+
         // 버튼은 stack panel 이 자식으로 
+
+        sp.Orientation = Orientation.Horizontal;
+        sp.HorizontalAlignment = HorizontalAlignment.Right;
+
+        btn1.Width = 100;
+        btn1.Height = 50;
+        btn1.Margin = new Thickness(5);
+
+        btn2.Width = 100;
+        btn2.Height = 50;
+        btn2.Margin = new Thickness(5);
+
         sp.Children.Add(btn1);
         sp.Children.Add(btn2);
 
