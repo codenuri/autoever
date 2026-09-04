@@ -36,10 +36,10 @@ class MainWindow : Window
         }
     }
 
-
-
     public MainWindow()
     {
+        InitGrid();
+
         Uri uri = new Uri("..\\..\\..\\totoro.jpg", UriKind.Relative);
 
         BitmapImage bitmap = new BitmapImage(uri);
@@ -54,8 +54,11 @@ class MainWindow : Window
         img.Source = crop; // <==
         img.Stretch = Stretch.Fill;
 
+        // Grid 에 img 연결
+        Grid.SetRow(img, 0);
+        Grid.SetColumn(img, 0);
 
-        Content = img;
+        grid.Children.Add(img);
     }
 }
 
