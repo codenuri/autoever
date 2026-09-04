@@ -1,12 +1,14 @@
-﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" >
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+		Title="Hello"
+		>
 	
 		<StackPanel>
 			
 			<Button>확인1</Button>
 
-			<Button Content="확인1"></Button>
+			<Button Content="확인2"></Button>
 
-			<Button Content="확인2"/>
+			<Button Content="확인3"/>
 
 		</StackPanel>
 

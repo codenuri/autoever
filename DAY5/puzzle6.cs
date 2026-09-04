@@ -149,7 +149,10 @@ class MainWindow : Window
         state[y1, x1] = state[y2, x2];
         state[y2, x2] = temp;
 
+
         // grid 안의 Image 얻기
+        // => grid 의 0, 0 에 있는 자식(img)를 한번에 구하는 방법이 없습니다
+        // => 그래서 GetImage() 함수 만든 것
         Image img1 = GetImage(y1, x1);
         Image img2 = GetImage(y2, x2);
 
