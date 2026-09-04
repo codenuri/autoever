@@ -2,6 +2,7 @@
 // => WPF 기본 코드 복사해 오세요
 using System.IO;
 using System.Windows;
+using System.Windows.Markup;
 using System.Xaml.Permissions;
 
 // 지금까지 예제
@@ -22,6 +23,7 @@ class App : Application
     public static void Main()
     {
         App app = new App();
+
 
         // UI 를 만드는 XML 파일을 Load
         FileStream fs = new FileStream("..\\..\\..\\ex1.txt", FileMode.Open);
