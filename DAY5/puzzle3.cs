@@ -21,6 +21,21 @@ class MainWindow : Window
     private double block_width;
     private double block_height;
 
+    // #1. Grid 초기화
+    private Grid grid = null;
+
+    public void InitGrid()
+    {
+        grid = new Grid();
+        Content = grid;
+
+        for (int i = 0; i < CNT; i++)
+        {
+            grid.RowDefinitions.Add(new RowDefinition());
+            grid.ColumnDefinitions.Add(new ColumnDefinition());
+        }
+    }
+
 
 
     public MainWindow()
