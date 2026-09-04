@@ -25,7 +25,7 @@ class MainWindow : Window
 
     public void InitState()
     {
-        state = new int[5,5];
+        state = new int[CNT, CNT];
 
         int k = 0;
 
@@ -33,7 +33,7 @@ class MainWindow : Window
         {
             for (int x = 0; x < CNT; x++)
             {
-                state[y, x] = y * 5 + x; // 0, 1, 2, 3, 4.... 
+                state[y, x] = y * CNT + x; // 0, 1, 2, 3, 4.... 
             }
         }
 
@@ -59,6 +59,7 @@ class MainWindow : Window
     public MainWindow()
     {
         InitGrid();
+        InitState();
 
         Uri uri = new Uri("..\\..\\..\\totoro.jpg", UriKind.Relative);
 
@@ -72,8 +73,14 @@ class MainWindow : Window
         {
             for (int x = 0; x < CNT; x++)
             {
-                Int32Rect rc = new Int32Rect((int)(x * block_width),
-                                              (int)(y * block_height),
+                // 핵심
+                // => 8 번 블럭을 그리려면 x 축으로 3, y 축으로 1을 알아야 합니다
+                int bx = state[y, x] % CNT; // x축  8 % 5 => 3
+                int by = state[y, x] / CNT; // y축  8 / 5 => 1
+
+
+                Int32Rect rc = new Int32Rect( (int)(bx * block_width),
+                                              (int)(by * block_height),
                                               (int)block_width,
                                               (int)block_height);
 
