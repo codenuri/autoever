@@ -109,6 +109,8 @@ class MainWindow : Window
         int bx = (int)(pt.X / (grid.ActualWidth / CNT));
         int by = (int)(pt.Y / (grid.ActualHeight / CNT));
 
+        Console.WriteLine("{0}, {1}", bx, by);
+
         // #2. 상/하/좌/우 에 EMPTY(24) 가 있는지 확인
         if (bx < CNT - 1 && state[by, bx + 1] == EMPTY)  // 오른쪽이 EMPTY
         {
@@ -119,13 +121,13 @@ class MainWindow : Window
         {
             Swap(by, bx, by, bx -1);
         }
-        else if (by < CNT - 1 && state[by - 1, bx] == EMPTY)  // 아래 EMPTY
+        else if (by < CNT - 1 && state[by + 1, bx] == EMPTY)  // 아래 EMPTY
         {
-            Swap(by, bx, by -1 , bx);
+            Swap(by, bx, by + 1 , bx);
         }
-        else if (bx > 0 && state[by + 1, bx] == EMPTY)  // 위 EMPTY
+        else if (by > 0 && state[by - 1, bx] == EMPTY)  // 위 EMPTY
         {
-            Swap(by, bx, by + 1, bx);
+            Swap(by, bx, by - 1, bx);
         }
         else
         {
@@ -134,7 +136,38 @@ class MainWindow : Window
     }
 
     public void Swap(int y1, int x1, int y2, int x2)
-    { 
+    {
+        // state 배열의 내용을 swap
+        int temp = state[y1, x1];
+        state[y1, x1] = state[y2, x2];
+        state[y2, x2] = temp;
+
+        // grid 안의 Image 얻기
+        Image img1 = GetImage(y1, x1);
+        Image img2 = GetImage(y2, x2);
+
+        if (img1 != null)
+        {
+            Grid.SetRow(img1, y2);
+            Grid.SetColumn(img1, x2);
+        }
+        if (img2 != null)
+        {
+            Grid.SetRow(img2, y1);
+            Grid.SetColumn(img2, x1);
+        }
+    }
+
+    // Grid에서 row, col 에 있는 Image 를 구하는 함수
+    // => Grid 의 모든 요소를 순회 하면서 row, col 의 값을 조사한것
+    public Image GetImage(int y1, int x1)
+    {
+        foreach (UIElement e in grid.Children)
+        {
+            if (Grid.GetRow(e) == y1 && Grid.GetColumn(e) == x1)
+                return (Image)e;
+        }
+        return null;
     }
 }
 
