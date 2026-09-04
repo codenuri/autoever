@@ -23,8 +23,16 @@ class MainWindow : Window
 
         BitmapImage bitmap = new BitmapImage(uri);
 
+        // #2. 한블럭의 크기 계산
+        block_width  = bitmap.Width / CNT;
+        block_height = bitmap.Height / CNT;
+
+        
+        // #3. bitmap 에서 일부 영역을 자른 새로운 비트맵
+        Int32Rect rc = new Int32Rect( 0, 0, block_width, block_height );
 
 
+        CroppedBitmap crop = new CroppedBitmap(bitmap, rc);
 
 
 
