@@ -27,11 +27,13 @@ class MainWindow : Window
         DockPanel.SetDock(sp, Dock.Bottom); // 핵심 : 패널의 중첩
 
 
-
         // #4. 각 컨트롤을 패널에 자식으로 추가
-        dp.Children.Add(btn1);
-        dp.Children.Add(btn3);
-        dp.Children.Add(btn2); // <= 마지막 자식이 나머지 영역  전체 사용
+        dp.Children.Add(txtbox);
+        dp.Children.Add(sp);
+        
+        // 버튼은 stack panel 이 자식으로 
+        sp.Children.Add(btn1);
+        sp.Children.Add(btn2);
 
     }
 }
