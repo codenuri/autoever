@@ -26,7 +26,7 @@ class App : Application
 
 
         // UI 를 만드는 XML 파일을 Load
-        FileStream fs = new FileStream("..\\..\\..\\ex1.txt", FileMode.Open);
+        FileStream fs = new FileStream("..\\..\\..\\ex2.txt", FileMode.Open);
 
         Window win = (Window)XamlReader.Load(fs);
 
@@ -37,3 +37,11 @@ class App : Application
         app.Run();
     }
 }
+
+// WPF 프로그램의 특징
+
+// 모든 UI : XAML 을 사용해서 작성
+//           XAML 조차도 자동생성해주는 프로그램이 있음.
+//           따라서, 디자이너가 만들수 있다
+
+// UI 에서 발생하는 이벤트 처리만 C# 코드로 작성
