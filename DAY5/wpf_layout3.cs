@@ -28,6 +28,19 @@ class MainWindow : Window
         grid.ColumnDefinitions.Add(c1);
         grid.ColumnDefinitions.Add(c2);
 
+        // #3. 컨트롤 만들어서 Grid 에 놓을 위치 속성 지정
+        Button btn1 = new Button { Content = "button1" };
+        Button btn2 = new Button { Content = "button2" };
+
+        Grid.SetRow(btn1, 0);
+        Grid.SetColumn(btn1, 0);
+        Grid.SetRow(btn2, 1);
+        Grid.SetColumn(btn2, 1);
+
+        // #4. 각 컨트롤을 grid 자식에 추가
+        grid.Children.Add(btn1);
+        grid.Children.Add(btn2);
+
     }
 }
 
