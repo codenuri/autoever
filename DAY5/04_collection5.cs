@@ -22,3 +22,10 @@ class Program
         Console.WriteLine(s);
     }
 }
+
+// C# 에는 20개가 넘는 collection 이 있습니다.
+// => tree, hash, stack, queue 등 자료구조의 표현
+// => 스레드 안전한가 기능등을 추가한 버전등..
+
+// 하지만 가장 널리 사용되는 것은 3개
+// => 배열, List, Dictionary
