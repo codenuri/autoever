@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Media;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -111,10 +112,32 @@ class MainWindow : Window
         // #2. 상/하/좌/우 에 EMPTY(24) 가 있는지 확인
         if (bx < CNT - 1 && state[by, bx + 1] == EMPTY)  // 오른쪽이 EMPTY
         {
+            // (by, bx) <=> ( by, bx + 1)
             Swap(by, bx, by, bx + 1); // 2개 블럭 교환
         }
+        else if (bx > 0  && state[by, bx - 1] == EMPTY)  // 왼쪽 EMPTY
+        {
+            Swap(by, bx, by, bx -1 1);
+        }
+        else if (by < CNT - 1 && state[by - 1, bx] == EMPTY)  // 아래 EMPTY
+        {
+            Swap(by, bx, by -1 , bx);
+        }
+        else if (bx > 0 && state[by + 1, bx] == EMPTY)  // 위 EMPTY
+        {
+            Swap(by, bx, by + 1, bx);
+        }
+        else
+        {
+            SystemSounds.Beep.Play(); // "삑"
+        }
+    }
+
+    public void Swap(int y1, int x1, int y2, int x2)
+    { 
     }
 }
+
 
 
 
