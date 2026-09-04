@@ -117,7 +117,7 @@ class MainWindow : Window
         }
         else if (bx > 0  && state[by, bx - 1] == EMPTY)  // 왼쪽 EMPTY
         {
-            Swap(by, bx, by, bx -1 1);
+            Swap(by, bx, by, bx -1);
         }
         else if (by < CNT - 1 && state[by - 1, bx] == EMPTY)  // 아래 EMPTY
         {
