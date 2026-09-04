@@ -23,3 +23,6 @@ class Program
         }
     }
 }
+
+// C# foreach, Python for, C++ ranged-for
+// > 모두 원리는 반복자꺼내서 열거하는 것
