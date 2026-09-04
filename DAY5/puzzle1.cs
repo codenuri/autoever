@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 // Sliding Puzzle Game #1
@@ -23,6 +24,7 @@ class MainWindow : Window
         // => 역활을 분리한것
         Image img = new Image();
         img.Source = bitmap;
+        img.Stretch = Stretch.Fill;
 
         // #4. Image 객체를 MainWindow Content 로 연결
         Content = img;
