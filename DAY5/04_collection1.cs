@@ -23,6 +23,7 @@ class Program
 
         // #2. List : 크기 변경이 가능한 동적 배열
         // => Generic 으로 설계 되었으므로 "<요소의 타입>" 으로 사용
+        // => 파이썬의 list 와 동일 : s = [1,2,3]
         List<int> s = new List<int>() { 1, 2, 3 };
 
         s.Add(4);
