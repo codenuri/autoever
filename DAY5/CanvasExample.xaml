@@ -1,0 +1,30 @@
+﻿<Window x:Class="WPFEXAMPLE.CanvasExample"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFEXAMPLE"
+        mc:Ignorable="d"
+        Title="CanvasExample" Height="450" Width="800">
+
+    <Canvas Background="White"  x:Name="canvas"
+             MouseLeftButtonDown="Canvas_MouseLeftButtonDown"
+             MouseMove="Canvas_MouseMove">
+
+        
+        <Menu Canvas.Top="100" Canvas.Left="100">
+            
+            <MenuItem Header="File">
+                <MenuItem Header="New"/>
+            </MenuItem>
+            
+        </Menu>
+        
+        
+        
+        <Button Canvas.Top="10" Canvas.Left="10" Content="확인"/>
+
+    </Canvas>
+    
+    
+</Window>
