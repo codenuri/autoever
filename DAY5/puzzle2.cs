@@ -8,6 +8,7 @@ using System.Windows.Media.Imaging;
 
 class MainWindow : Window
 {
+    // #1. 데이터 관리에 필요한 필드 선언
     private const int CNT = 5;               // 5 * 5 게임
     private const int EMPTY = CNT * CNT - 1; // 24번은 EMPTY
 
@@ -29,15 +30,15 @@ class MainWindow : Window
 
         
         // #3. bitmap 에서 일부 영역을 자른 새로운 비트맵
-        Int32Rect rc = new Int32Rect( 0, 0, block_width, block_height );
+        Int32Rect rc = new Int32Rect( 0, 0, (int)block_width, (int)block_height );
 
 
         CroppedBitmap crop = new CroppedBitmap(bitmap, rc);
 
 
-
+        // #4. Image 객체 생성시 crop 된 비트맵 사용
         Image img = new Image();
-        img.Source = bitmap;
+        img.Source = crop; // <==
         img.Stretch = Stretch.Fill;
 
 
