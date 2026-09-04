@@ -1,0 +1,123 @@
+﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+
+// Sliding Puzzle Game #6. 
+// => 마우스 왼쪽 버튼 클릭시 블럭 이동하기
+
+
+
+
+
+class MainWindow : Window
+{
+    private const int CNT = 5;
+    private const int EMPTY = CNT * CNT - 1;
+    private double block_width;
+    private double block_height;
+
+    private Grid grid = null;
+
+
+    private int[,] state = null;
+
+    public void InitState()
+    {
+        state = new int[CNT, CNT];
+
+        int k = 0;
+
+        for (int y = 0; y < CNT; y++)
+        {
+            for (int x = 0; x < CNT; x++)
+            {
+                state[y, x] = y * CNT + x; // 0, 1, 2, 3, 4.... 
+            }
+        }
+    }
+
+
+
+
+
+    public void InitGrid()
+    {
+        grid = new Grid();
+        Content = grid;
+
+        for (int i = 0; i < CNT; i++)
+        {
+            grid.RowDefinitions.Add(new RowDefinition());
+            grid.ColumnDefinitions.Add(new ColumnDefinition());
+        }
+    }
+
+    public MainWindow()
+    {
+        InitGrid();
+        InitState();
+
+        Uri uri = new Uri("..\\..\\..\\totoro.jpg", UriKind.Relative);
+
+        BitmapImage bitmap = new BitmapImage(uri);
+
+        block_width = bitmap.Width / CNT;
+        block_height = bitmap.Height / CNT;
+
+
+        for (int y = 0; y < CNT; y++)
+        {
+            for (int x = 0; x < CNT; x++)
+            {
+                if (state[y, x] == EMPTY)
+                    continue;
+
+                int bx = state[y, x] % CNT;
+                int by = state[y, x] / CNT;
+
+
+                Int32Rect rc = new Int32Rect((int)(bx * block_width),
+                                              (int)(by * block_height),
+                                              (int)block_width,
+                                              (int)block_height);
+
+                CroppedBitmap crop = new CroppedBitmap(bitmap, rc);
+
+                Image img = new Image();
+                img.Source = crop; // <==
+                img.Stretch = Stretch.Fill;
+                img.Margin = new Thickness(0.5);
+
+                Grid.SetRow(img, y);
+                Grid.SetColumn(img, x);
+
+                grid.Children.Add(img);
+
+
+            }
+        }
+        grid.MouseLeftButtonDown += Grid_MouseLeftButtonDown;
+    }
+
+    private void Grid_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+    {
+        Console.WriteLine("lbutton");
+    }
+}
+
+
+class App : Application
+{
+    [STAThread]
+    public static void Main()
+    {
+        App app = new App();
+
+        MainWindow w = new MainWindow();
+        w.Title = "Hello, WPF";
+        w.Show();
+
+        app.Run();
+    }
+}
