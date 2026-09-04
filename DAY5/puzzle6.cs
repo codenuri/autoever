@@ -102,9 +102,29 @@ class MainWindow : Window
 
     private void Grid_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
     {
-        Console.WriteLine("lbutton");
+        Point pt = e.GetPosition(this);
+
+        // #1. 좌표로 부터 어느 블럭을 클릭했는지 계산
+        int bx = (int)(pt.X / block_width);
+        int by = (int)(pt.Y / block_height);
+
+        // #2. 상/하/좌/우 에 EMPTY(24) 가 있는지 확인
+        if (bx < CNT - 1 && state[by, bx + 1] == EMPTY)  // 오른쪽이 EMPTY
+        {
+            Swap(by, bx, by, bx + 1); // 2개 블럭 교환
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
 
 
 class App : Application
