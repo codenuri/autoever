@@ -37,7 +37,7 @@ class MainWindow : Window
             }
         }
 
-        state[0, 3] = 0; // 테스트용 코드
+//      state[0, 3] = 0; // 테스트용 코드
     }
 
 
@@ -73,6 +73,9 @@ class MainWindow : Window
         {
             for (int x = 0; x < CNT; x++)
             {
+                if (state[y, x] == EMPTY)
+                    continue;
+
                 // 핵심
                 // => 8 번 블럭을 그리려면 x 축으로 3, y 축으로 1을 알아야 합니다
                 int bx = state[y, x] % CNT; // x축  8 % 5 => 3
