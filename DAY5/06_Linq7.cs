@@ -4,17 +4,24 @@ using System.Linq;
 
 // LINQ
 
+delegate bool MyFunc(int arg);
+
+
 static class MyLinq
 {
-    public static int MyWhere(   )
+    public static IEnumerable<int> MyWhere( this int[] arr, MyFunc f  )
     {
-        return 0;
+        Console.WriteLine("MyWhere");
+
+        // 모든 요소를 차례대로 꺼내서
+        foreach (var item in arr)
+        {
+            // 함수에 보내서 결과가 true 일때 반환
+            if (f(item) == true)
+                yield return item;
+        }       
     }
 }
-
-
-
-
 class Program
 {
     public static void Main()
@@ -28,6 +35,7 @@ class Program
         {
             Console.WriteLine(n);
         }
+   
     }
 }
 
